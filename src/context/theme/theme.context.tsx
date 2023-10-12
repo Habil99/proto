@@ -16,12 +16,11 @@ import {
 
 const ThemeContext = createContext<ThemeContextType>({
   mode: ThemeMode.Light,
-  toggleThemeMode: () => {
-  },
+  toggleThemeMode: () => {},
 });
 
 export function useThemeSelector<T>(
-  selector: (state: ThemeContextType) => T,
+  selector: (state: ThemeContextType) => T = (state) => state as T,
 ): T {
   const context = useContext(ThemeContext);
   if (!context) {
@@ -31,10 +30,12 @@ export function useThemeSelector<T>(
 }
 
 const ThemeProvider: FC<ThemeProviderType> = ({
-                                                children,
-                                                defaultThemeMode,
-                                              }) => {
-  const [mode, setMode] = useState<ThemeMode>(defaultThemeMode || ThemeMode.Light);
+  children,
+  defaultThemeMode,
+}) => {
+  const [mode, setMode] = useState<ThemeMode>(
+    defaultThemeMode || ThemeMode.Light,
+  );
 
   const toggleThemeMode = useCallback(() => {
     setMode((prevState) =>
@@ -53,7 +54,6 @@ const ThemeProvider: FC<ThemeProviderType> = ({
 
   useEffect(() => {
     if (mode) {
-      console.log(mode) ;
       document.body.setAttribute("data-theme", mode);
       document.cookie = `mode=${mode}; path=/; max-age=31536000`;
     }

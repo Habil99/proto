@@ -1,8 +1,7 @@
 import backgroundCoverStyles from "./background-cover.module.scss";
 import LineWebIcon from "@/components/background-cover/icons/line-web-icon";
 import FlairTopIcon from "@/components/background-cover/icons/flair-top.icon";
-import FlairBottomIcon
-  from "@/components/background-cover/icons/flair-bottom.icon";
+import FlairBottomIcon from "@/components/background-cover/icons/flair-bottom.icon";
 
 export const BackgroundCover = () => {
   return (

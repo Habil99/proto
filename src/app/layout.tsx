@@ -1,12 +1,12 @@
 import "./globals.scss";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import React from "react";
 import ThemeProvider, { ThemeMode } from "@/context/theme";
 import { BackgroundCover, Navbar } from "@/components";
 import { cookies } from "next/headers";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +22,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-    <body className={inter.className} data-theme={defaultThemeMode}>
+    <body className={poppins.className} data-theme={defaultThemeMode}>
     <ThemeProvider defaultThemeMode={defaultThemeMode}>
       <BackgroundCover />
       <Navbar />
