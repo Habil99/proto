@@ -1,0 +1,5 @@
+.nav {
+  &__link {
+    @apply text-color-dark py-2 relative before:absolute before:h-[1px] before:bg-gradient-primary before:transition-all before:bottom-0 before:left-0 before:w-0 hover:before:w-full;
+  }
+}

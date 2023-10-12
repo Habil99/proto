@@ -1,0 +1,18 @@
+.background__cover {
+  @apply absolute -z-[1] top-0 right-0 left-0 h-[150vh] overflow-hidden flex items-center justify-center;
+  mask-image: linear-gradient(180deg, #000 80%, rgba(0, 0, 0, 0) 100%);
+}
+
+.line__web {
+  @apply fill-none absolute w-[140%] stroke-color-dark opacity-[0.03];
+}
+
+.flair {
+  &__top {
+    @apply w-screen aspect-[31/26] absolute top-0 left-0 opacity-[0.15];
+  }
+
+  &__bottom {
+    @apply w-screen aspect-[85/73] absolute top-0 right-[-40vw] opacity-[0.15];
+  }
+}

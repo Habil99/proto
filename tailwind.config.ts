@@ -10,10 +10,6 @@ const config: Config = {
     extend: {
       colors: {
         "theme-color": "var(--accent-color)",
-        "gradient-color-primary": "var(--gradient-color-primary))",
-        "gradient-color-secondary": "var(--gradient-color-secondary))",
-        "gradient-angle": "var(--gradient-angle)",
-        "gradient-primary": "var(--gradient-primary)",
         "logo-header-height": "var(--logo-header-height)",
         "logo-footer-height": "var(--logo-footer-height)",
         "white": "var(--white)",
@@ -22,8 +18,8 @@ const config: Config = {
         "error-color": "var(--error-color)",
         "body-background-color": "var(--body-background-color)",
         "card-background-color": "var(--card-background-color)",
-        "text-color-main": "var(--text-color-main)",
-        "text-color-dark": "var(--text-color-dark)",
+        "color-main": "var(--text-color-main)",
+        "color-dark": "var(--text-color-dark)",
         "tag-background-color": "var(--tag-background-color)",
         "background-color-alt": "var(--background-color-alt)",
         "text-color-alt": "var(--text-color-alt)",
@@ -43,6 +39,12 @@ const config: Config = {
       container: {
         center: true,
         screens: {},
+      },
+      backgroundImage: {
+        "gradient-color-primary": "var(--gradient-color-primary))",
+        "gradient-color-secondary": "var(--gradient-color-secondary))",
+        "gradient-angle": "var(--gradient-angle)",
+        "gradient-primary": "var(--gradient-primary)",
       },
     },
   },

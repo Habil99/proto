@@ -3,3 +3,12 @@ body {
   color: var(--text-color-main);
   transition: background-color 0.2s ease-in;
 }
+
+.gradient-color-primary {
+  stop-color: var(--gradient-color-primary);
+}
+
+.gradient-color-secondary {
+  stop-color: var(--gradient-color-secondary);
+}
+

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React from "react";
 import ThemeProvider, { ThemeMode } from "@/context/theme";
-import Navbar from "@/components";
+import { BackgroundCover, Navbar } from "@/components";
 import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,20 +14,21 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: {
+                                     children,
+                                   }: {
   children: React.ReactNode;
 }) {
   const defaultThemeMode = cookies().get("mode")?.value as ThemeMode | undefined;
 
   return (
     <html lang="en">
-      <body className={inter.className} data-theme={defaultThemeMode}>
-        <ThemeProvider defaultThemeMode={defaultThemeMode}>
-          <Navbar />
-          {children}
-        </ThemeProvider>
-      </body>
+    <body className={inter.className} data-theme={defaultThemeMode}>
+    <ThemeProvider defaultThemeMode={defaultThemeMode}>
+      <BackgroundCover />
+      <Navbar />
+      {children}
+    </ThemeProvider>
+    </body>
     </html>
   );
 }
