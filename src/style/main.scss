@@ -1,0 +1,17 @@
+@import "theme";
+@import "variables";
+
+:root {
+  @include common-vars;
+  @include theme-light;
+  --font-title: Inter;
+  --ghost-accent-color: #215dee;
+  --gradient-color-two: #b61cff;
+}
+
+[data-theme="dark"] {
+  @include common-vars;
+  @include theme-dark;
+}
+
+@import "base";

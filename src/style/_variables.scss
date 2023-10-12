@@ -1,0 +1,45 @@
+@import "theme";
+
+/*=====================================================
+    common variables ( as SCSS mixin )
+    define common variable for light and dark here
+=====================================================*/
+@mixin common-vars {
+  /*****
+  Setting theme color to ghost accent color.
+  --ghost-accent-color, --theme-color, and --gradient-color-primary] all are same color
+  By default we used #215DEE
+  If you want to disable gradient then just set
+  the --gradient-color-secondary to the same color as --ghost-accent-color
+  *****/
+  --theme-color: var(--ghost-accent-color); /*  #215DEE */
+  --gradient-color-primary: #215dee;
+  --gradient-color-secondary: #b61cff;
+  --gradient-angle: 30deg;
+  --gradient-primary: linear-gradient(
+    var(--gradient-angle),
+    var(--gradient-color-primary),
+    var(--gradient-color-secondary)
+  );
+  --logo-header-height: 32px;
+  --logo-footer-height: 32px;
+  --white: #ffffff;
+  --black: #000000;
+  --success-color: #3cb44e;
+  --error-color: #f02e2e;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+  --global-width-wide: 1032px;
+  --global-width-content: 700px;
+}
+
+.rounded-corner {
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}

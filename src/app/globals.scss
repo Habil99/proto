@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .g-container {
+    max-width: 1392px;
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+  }
+}
+
+@import "../style/main";

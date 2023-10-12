@@ -1,0 +1,32 @@
+/*=====================================================
+    light theme colors ( as SCSS mixin )
+=====================================================*/
+@mixin theme-light {
+  --body-background-color: #ffffff;
+  --card-background-color: var(--white);
+  --text-color-main: #2d3350;
+  --text-color-dark: #090c1e;
+  --tag-background-color: #eff1f4;
+  --background-color-alt: #100f15;
+  --text-color-alt: var(--body-background-color);
+  --border-color: #eeeeee;
+  --code-background-color: #f1f1f1;
+  --shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/*=====================================================
+    dark theme colors ( as SCSS mixin )
+=====================================================*/
+@mixin theme-dark {
+  --body-background-color: #100f15;
+  --card-background-color: #17171c;
+  --text-color-main: #d4d4d4;
+  --text-color-dark: #f1f1f1;
+  --tag-background-color: #313438;
+  --background-color-alt: #ffffff;
+  --text-color-alt: var(--body-background-color);
+  --border-color: #28272c;
+  --code-background-color: #05091a;
+  --shadow: 0 3px 10px -2px rgba(4, 9, 14, 0.1),
+    0 10px 25px -30px rgba(0, 0, 0, 0.1);
+}
