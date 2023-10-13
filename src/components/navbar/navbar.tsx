@@ -8,7 +8,7 @@ import { BiSearch } from "react-icons/bi";
 
 export const Navbar = () => {
   return (
-    <nav className="g-container my-6 flex items-center">
+    <nav className="my-6 flex items-center mb-8 md:mb-16">
       <Link href="/">
         <Logo />
       </Link>
@@ -20,15 +20,10 @@ export const Navbar = () => {
         ))}
       </ul>
       <div className="ml-auto flex items-center gap-2">
-        <Button className="!px-2" icon={<BiSearch />}
-                size="lg" />
+        <Button className="!px-2" icon={<BiSearch />} size="lg" />
         <ThemeSwitcher />
         <Link href="/auth/login">Sign In</Link>
-        <Button
-          className="ml-5"
-          mode="primary"
-          rounded
-        >
+        <Button className="ml-5" mode="primary" rounded>
           Become a member
         </Button>
       </div>

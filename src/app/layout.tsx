@@ -6,7 +6,10 @@ import ThemeProvider, { ThemeMode } from "@/context/theme";
 import { BackgroundCover, Navbar } from "@/components";
 import { cookies } from "next/headers";
 
-const poppins = Poppins({ subsets: ["latin"], weight: "400" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,21 +17,25 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: {
+  children,
+}: {
   children: React.ReactNode;
 }) {
-  const defaultThemeMode = cookies().get("mode")?.value as ThemeMode | undefined;
+  const defaultThemeMode = cookies().get("mode")?.value as
+    | ThemeMode
+    | undefined;
 
   return (
     <html lang="en">
-    <body className={poppins.className} data-theme={defaultThemeMode}>
-    <ThemeProvider defaultThemeMode={defaultThemeMode}>
-      <BackgroundCover />
-      <Navbar />
-      {children}
-    </ThemeProvider>
-    </body>
+      <body className={poppins.className} data-theme={defaultThemeMode}>
+        <ThemeProvider defaultThemeMode={defaultThemeMode}>
+          <BackgroundCover />
+          <div className="g-container">
+            <Navbar />
+            {children}
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

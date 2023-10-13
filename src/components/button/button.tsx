@@ -26,7 +26,6 @@ export const Button: FC<ButtonPropsType> = ({
         btn__lg: size === ButtonSize.Lg,
         btn__primary: mode === ButtonMode.Primary,
         btn__secondary: mode === ButtonMode.Secondary,
-        btn__base: mode === ButtonMode.Base,
         btn__rounded: rounded,
         btn__outlined: outlined,
       })}
