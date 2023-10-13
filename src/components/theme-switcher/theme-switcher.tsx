@@ -12,6 +12,8 @@ export const ThemeSwitcher = () => {
     <Button
       icon={mode === ThemeMode.Light ? <FaMoon /> : <BiSun />}
       onClick={toggleThemeMode}
+      size="lg"
+      className="!px-2"
     />
   );
 };

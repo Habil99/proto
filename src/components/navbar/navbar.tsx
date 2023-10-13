@@ -5,7 +5,6 @@ import navbarStyles from "./navbar.module.scss";
 import { Button } from "@/components";
 import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher";
 import { BiSearch } from "react-icons/bi";
-import { ButtonMode, ButtonSize } from "@/components/button/button.type";
 
 export const Navbar = () => {
   return (
@@ -20,14 +19,14 @@ export const Navbar = () => {
           </li>
         ))}
       </ul>
-      <div className="ml-auto flex items-center gap-1">
-        <Button icon={<BiSearch />} />
+      <div className="ml-auto flex items-center gap-2">
+        <Button className="!px-2" icon={<BiSearch />}
+                size="lg" />
         <ThemeSwitcher />
         <Link href="/auth/login">Sign In</Link>
         <Button
           className="ml-5"
-          size={ButtonSize.Lg}
-          mode={ButtonMode.Primary}
+          mode="primary"
           rounded
         >
           Become a member

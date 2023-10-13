@@ -1,5 +1,4 @@
 import React from "react";
-import { EnumAsUnion } from "@/types";
 
 export enum ButtonMode {
   Base = "base",
@@ -20,16 +19,16 @@ export enum ButtonIconPosition {
   After = "after",
 }
 
-export type ButtonModeType = typeof ButtonMode; // not key, but value
-export type ButtonIconPositionType = typeof ButtonIconPosition;
-export type ButtonSizeType = typeof ButtonSize;
+export type ButtonModeType = "base" | "primary" | "secondary" | "success";
+export type ButtonIconPositionType = "before" | "after";
+export type ButtonSizeType = "xs" | "sm" | "md" | "lg";
 
 export type ButtonPropsType = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: React.ReactNode;
-  mode?: EnumAsUnion<ButtonModeType>;
+  mode?: ButtonModeType;
   icon?: React.ReactNode;
-  position?: EnumAsUnion<ButtonIconPositionType>;
-  size?: EnumAsUnion<ButtonSizeType>;
+  position?: ButtonIconPositionType;
+  size?: ButtonSizeType;
   classNames?: string;
   rounded?: boolean;
   outlined?: boolean;

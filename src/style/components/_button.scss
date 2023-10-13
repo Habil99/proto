@@ -1,0 +1,39 @@
+.btn {
+  @apply hover:opacity-[0.85] bg-right-top whitespace-nowrap
+  text-center font-bold align-middle select-none py-0 px-8 h-12 leading-[48px]
+  rounded-[99px] transition-all;
+
+  &:not(:disabled):not(.disabled) {
+    @apply cursor-pointer;
+  }
+
+  &__primary {
+    @apply bg-gradient-primary text-white hover:text-white;
+  }
+
+  &__flat {
+    --btn-accent-color: var(--theme-color);
+    @apply bg-[var(--btn-accent-color)] border border-solid border-[var(--btn-accent-color)];
+  }
+
+  &__success {
+    --btn-accent-color: var(--success-color);
+  }
+
+  &__error {
+    --btn-accent-color: var(--error-color);
+  }
+
+  &__outlined {
+    @apply focus:text-[var(--btn-accent-color)] border border-solid
+    border-[var(--btn-accent-color)] text-[var(--btn-accent-color)];
+  }
+
+  &__lg {
+    @apply h-14 leading-[56px] text-lg;
+  }
+
+  &__sm {
+    @apply h-10 leading-10 px-4 text-sm font-normal;
+  }
+}
