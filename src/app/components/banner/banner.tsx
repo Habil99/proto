@@ -1,8 +1,9 @@
 import { Button } from "@/components";
+import { FC } from "react";
 
-const Banner = () => {
+const Banner: FC = () => {
   return (
-    <div className="flex items-center justify-center flex-col text-center mx-auto mb-24 lg:mb-32">
+    <section className="flex items-center justify-center flex-col text-center mx-auto mb-24 lg:mb-32">
       <h1 className="leading-[1.2] text-7xl mb-4 lg:mx-24">
         Hello 👋, we are Porto, exploring fashion, lifestyle and health.
       </h1>
@@ -14,7 +15,7 @@ const Banner = () => {
       <Button size="lg" mode="primary">
         Join now - it`s free!
       </Button>
-    </div>
+    </section>
   );
 };
 
