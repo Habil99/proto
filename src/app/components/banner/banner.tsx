@@ -9,7 +9,7 @@ const Banner: FC = () => {
       </h1>
       <p className="mx-auto text-xl leading-[1.6] mt-6 mb-8 max-w-content">
         Introducing a modern and sleek theme for Ghost. Perfect for
-        <strong> magazine, newsletter, professional and personal blog</strong>
+        <strong> magazine, newsletter, professional and personal blog </strong>
         publishing.
       </p>
       <Button size="lg" variant="primary">
