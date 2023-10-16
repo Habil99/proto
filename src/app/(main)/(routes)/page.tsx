@@ -27,6 +27,36 @@ const posts: PostType[] = [
     ],
     readTime: "5 min",
   },
+  {
+    id: uuid(),
+    tag: "Sport",
+    title: "Football is the most popular sport in the world",
+    description:
+      "Football is the most popular sport in the world. It is played in almost every country, and is the most popular sport in the world.",
+    imagePath: "/images/post-8.webp",
+    authors: [
+      {
+        imagePath: "/images/author-2.jpg",
+        slug: "author-2",
+      },
+    ],
+    readTime: "4 min",
+  },
+  {
+    id: uuid(),
+    tag: "Fashion",
+    title: "Fashion is a popular aesthetic expression",
+    description:
+      "Fashion is a popular aesthetic expression at a particular period and place and in a specific context, especially in clothing, footwear, lifestyle, accessories, makeup, hairstyle, and body proportions.",
+    imagePath: "/images/post-9.webp",
+    authors: [
+      {
+        imagePath: "/images/author-2.jpg",
+        slug: "author-3",
+      },
+    ],
+    readTime: "3 min",
+  },
 ];
 
 export default function Home() {
