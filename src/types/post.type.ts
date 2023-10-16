@@ -21,3 +21,5 @@ export type SecondaryPostType = {
   tag: string;
   isMain?: false;
 };
+
+export type PostType = Omit<FeaturedPostType, "isMain">;
