@@ -1,6 +1,6 @@
 import React from "react";
 
-export enum ButtonMode {
+export enum ButtonVariant {
   Base = "base",
   Primary = "primary",
   Secondary = "secondary",
@@ -19,13 +19,13 @@ export enum ButtonIconPosition {
   After = "after",
 }
 
-export type ButtonModeType = "base" | "primary" | "secondary" | "success";
+export type ButtonVariantType = "base" | "primary" | "secondary" | "success";
 export type ButtonIconPositionType = "before" | "after";
 export type ButtonSizeType = "xs" | "sm" | "md" | "lg";
 
 export type ButtonPropsType = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: React.ReactNode;
-  mode?: ButtonModeType;
+  variant?: ButtonVariantType;
   icon?: React.ReactNode;
   position?: ButtonIconPositionType;
   size?: ButtonSizeType;

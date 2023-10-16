@@ -1,14 +1,14 @@
 import { FC } from "react";
 import {
   ButtonIconPosition,
-  ButtonMode,
   ButtonPropsType,
   ButtonSize,
+  ButtonVariant,
 } from "@/components/ui/button/button.type";
 import clsx from "clsx";
 
 export const Button: FC<ButtonPropsType> = ({
-  mode = ButtonMode.Base,
+  variant = ButtonVariant.Base,
   children,
   icon,
   position = ButtonIconPosition.Before,
@@ -24,8 +24,8 @@ export const Button: FC<ButtonPropsType> = ({
         btn__md: size === ButtonSize.Md,
         btn__sm: size === ButtonSize.Sm,
         btn__lg: size === ButtonSize.Lg,
-        btn__primary: mode === ButtonMode.Primary,
-        btn__secondary: mode === ButtonMode.Secondary,
+        btn__primary: variant === ButtonVariant.Primary,
+        btn__secondary: variant === ButtonVariant.Secondary,
         btn__rounded: rounded,
         btn__outlined: outlined,
       })}

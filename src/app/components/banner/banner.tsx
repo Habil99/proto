@@ -12,7 +12,7 @@ const Banner: FC = () => {
         <strong> magazine, newsletter, professional and personal blog</strong>
         publishing.
       </p>
-      <Button size="lg" mode="primary">
+      <Button size="lg" variant="primary">
         Join now - it`s free!
       </Button>
     </section>

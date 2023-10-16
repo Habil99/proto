@@ -13,7 +13,7 @@ const FeaturedPostType = () => {
 
   return (
     <section className="md:mb-36">
-      <h2 className="section-title text-center">Featured posts</h2>
+      <h2 className="section-title">Featured posts</h2>
       <div className="flex gap-8">
         <div className="lg:flex-[0.55]">
           {mainFeaturedPostType && <PostCard data={mainFeaturedPostType} />}

@@ -1,5 +1,6 @@
 import Banner from "@/app/components/banner/banner";
 import FeaturedPostType from "@/app/components/featured-post/featured-post";
+import PopularTag from "@/app/components/popular-tag/popular-tag";
 
 export const metadata = {
   title: "Proto",
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="">
       <Banner />
       <FeaturedPostType />
+      <PopularTag />
     </main>
   );
 }

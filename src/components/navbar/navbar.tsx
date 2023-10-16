@@ -23,7 +23,7 @@ export const Navbar = () => {
         <Button className="!px-2" icon={<BiSearch />} size="lg" />
         <ThemeSwitcher />
         <Link href="/auth/login">Sign In</Link>
-        <Button className="ml-5" mode="primary" rounded>
+        <Button className="ml-5" variant="primary" rounded>
           Become a member
         </Button>
       </div>
