@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import React from "react";
 import ThemeProvider, { ThemeMode } from "@/context/theme";
-import { BackgroundCover, Navbar } from "@/components";
+import { BackgroundCover, Footer, Navbar } from "@/components";
 import { cookies } from "next/headers";
 
 const poppins = Poppins({
@@ -32,8 +32,9 @@ export default function RootLayout({
           <BackgroundCover />
           <div className="g-container">
             <Navbar />
-            {children}
           </div>
+          <div className="g-container">{children}</div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

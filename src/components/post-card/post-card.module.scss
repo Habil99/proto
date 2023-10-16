@@ -1,16 +1,16 @@
 .post__card {
-  @apply p-6 rounded-lg border border-solid border-border-color bg-card-background-color;
+  @apply flex flex-col p-6 rounded-lg border border-solid border-border-color bg-card-background-color;
 
   &__image {
     @apply object-cover rounded-lg;
 
     &__wrapper {
-      @apply relative aspect-[16/9] rounded-lg;
+      @apply relative aspect-[16/9] rounded-lg shrink-0;
     }
   }
 
   &__body {
-    @apply mt-4;
+    @apply mt-4 flex flex-col h-full;
   }
 
   &__description {
@@ -27,7 +27,7 @@
   }
 
   &__footer {
-    @apply flex items-center gap-4;
+    @apply flex items-center gap-4 mt-auto;
   }
 
   &__authors {
