@@ -18,10 +18,39 @@
   }
 
   &__tag {
-    @apply relative text-sm inline-flex z-[1] px-4 leading-6 h-7 rounded-[14px]
-    text-color-dark bg-transparent border border-solid border-[var(--tag-color)]
+    @apply relative text-sm inline-flex items-center justify-center z-[1] px-4
+    leading-6 h-7 rounded-[14px]
+    text-color-dark bg-transparent border border-solid border-[#4d61ff]
     transition-all before:inset-0 before:-z-[1] before:rounded-[14px]
     before:absolute before:opacity-[0.1] before:transition-all
-    before:bg-[var(--tag-color)] before:w-full before:h-full mb-4 hover:before:opacity-[0.2];
+    before:bg-[#4d61ff] before:w-full before:h-full mb-4 hover:before:opacity-[0.2];
+  }
+
+  &__footer {
+    @apply flex items-center gap-4;
+  }
+
+  &__authors {
+    @apply flex items-center relative;
+
+    @for $i from 1 through 9 {
+      > :nth-child(#{$i}) {
+        z-index: 10 - $i;
+      }
+    }
+  }
+
+  &__author {
+    @apply -mr-2 relative p-1 bg-body-background-color rounded-full before:absolute before:inset-0
+    before:bg-gradient-primary before:rounded-full before:opacity-0
+    before:transition-all hover:before:opacity-100;
+
+    img {
+      @apply rounded-full object-cover relative;
+    }
+  }
+
+  &__read__time {
+    @apply flex items-center gap-2;
   }
 }

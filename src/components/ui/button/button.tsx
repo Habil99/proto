@@ -4,7 +4,7 @@ import {
   ButtonMode,
   ButtonPropsType,
   ButtonSize,
-} from "@/components/button/button.type";
+} from "@/components/ui/button/button.type";
 import clsx from "clsx";
 
 export const Button: FC<ButtonPropsType> = ({

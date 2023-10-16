@@ -1,9 +1,9 @@
-import Logo from "@/components/logo/logo";
+import Logo from "@/components/ui/logo/logo";
 import Link from "next/link";
 import { navLinks } from "@/components/navbar/constants";
 import navbarStyles from "./navbar.module.scss";
 import { Button } from "@/components";
-import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher";
+import { ThemeSwitcher } from "@/components/ui/theme-switcher/theme-switcher";
 import { BiSearch } from "react-icons/bi";
 
 export const Navbar = () => {

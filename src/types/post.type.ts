@@ -3,11 +3,21 @@ export type AuthorType = {
   imagePath: string;
 };
 
-export type PostType = {
+export type FeaturedPostType = {
+  id: string | number;
   title: string;
   description: string;
   readTime: string;
   tag: string;
   authors: AuthorType[];
   imagePath: string;
+  isMain: true;
+};
+
+export type SecondaryPostType = {
+  id: number;
+  title: string;
+  imagePath: string;
+  tag: string;
+  isMain?: false;
 };
