@@ -1,0 +1,27 @@
+.post__card {
+  @apply p-6 rounded-lg border border-solid border-border-color bg-card-background-color;
+
+  &__image {
+    @apply object-cover rounded-lg;
+
+    &__wrapper {
+      @apply relative aspect-[16/9] rounded-lg;
+    }
+  }
+
+  &__body {
+    @apply mt-4;
+  }
+
+  &__description {
+    @apply text-xl mt-2 mb-4;
+  }
+
+  &__tag {
+    @apply relative text-sm inline-flex z-[1] px-4 leading-6 h-7 rounded-[14px]
+    text-color-dark bg-transparent border border-solid border-[var(--tag-color)]
+    transition-all before:inset-0 before:-z-[1] before:rounded-[14px]
+    before:absolute before:opacity-[0.1] before:transition-all
+    before:bg-[var(--tag-color)] before:w-full before:h-full mb-4 hover:before:opacity-[0.2];
+  }
+}
