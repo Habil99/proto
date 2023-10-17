@@ -9,7 +9,7 @@ export const Footer = () => {
             <Logo />
             <p className="md:max-w-md">
               Porto is a modern classic blog theme for Ghost. Use this theme for
-              company blog, magazine, niche or personal blog.{" "}
+              company blog, magazine, niche or personal blog.
             </p>
           </div>
         </div>
