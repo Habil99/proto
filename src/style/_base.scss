@@ -1,6 +1,14 @@
 body {
   background-color: var(--body-background-color);
   color: var(--text-color-main);
+
+  &.menu-is-open {
+    overflow-y: hidden;
+
+    .g-nav {
+      @apply bg-body-background-color;
+    }
+  }
 }
 
 .gradient-color-primary {

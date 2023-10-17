@@ -30,9 +30,7 @@ export default function RootLayout({
       <body className={poppins.className} data-theme={defaultThemeMode}>
         <ThemeProvider defaultThemeMode={defaultThemeMode}>
           <BackgroundCover />
-          <div className="g-container">
-            <Navbar />
-          </div>
+          <Navbar />
           <div className="g-container">{children}</div>
           <Footer />
         </ThemeProvider>
