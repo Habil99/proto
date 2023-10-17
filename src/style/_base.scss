@@ -11,6 +11,13 @@ body {
   }
 }
 
+input {
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
 .gradient-color-primary {
   stop-color: var(--gradient-color-primary);
 }

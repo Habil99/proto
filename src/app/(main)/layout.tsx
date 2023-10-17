@@ -1,10 +1,7 @@
-import "../globals.scss";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import React from "react";
-import ThemeProvider, { ThemeMode } from "@/context/theme";
-import { BackgroundCover, Footer, Navbar } from "@/components";
-import { cookies } from "next/headers";
+import { Footer, Navbar } from "@/components";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,20 +18,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const defaultThemeMode = cookies().get("mode")?.value as
-    | ThemeMode
-    | undefined;
-
   return (
-    <html lang="en">
-      <body className={poppins.className} data-theme={defaultThemeMode}>
-        <ThemeProvider defaultThemeMode={defaultThemeMode}>
-          <BackgroundCover />
-          <Navbar />
-          <div className="g-container">{children}</div>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <section>
+      <Navbar />
+      <div className="g-container">{children}</div>
+      <Footer />
+    </section>
   );
 }

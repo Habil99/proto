@@ -1,5 +1,5 @@
 .background__cover {
-  @apply absolute -z-[1] top-0 right-0 left-0 h-[150vh] overflow-hidden flex items-center justify-center;
+  @apply absolute -z-[1] top-0 right-0 left-0 h-[100vh] overflow-hidden flex items-center justify-center;
   mask-image: linear-gradient(180deg, #000 80%, rgba(0, 0, 0, 0) 100%);
 }
 

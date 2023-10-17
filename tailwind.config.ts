@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "theme-color": "var(--accent-color)",
+        "theme-color": "var(--theme-color)",
         "logo-header-height": "var(--logo-header-height)",
         "logo-footer-height": "var(--logo-footer-height)",
         white: "var(--white)",

@@ -25,7 +25,7 @@ export const Navbar = () => {
           <div className="ml-auto flex items-center gap-2">
             <Button className="!px-2" icon={<BiSearch />} size="lg" />
             <ThemeSwitcher />
-            <Link className="max-lg:hidden" href="/auth/login">
+            <Link className="max-lg:hidden" href="/sign-in">
               Sign In
             </Link>
             <Button className="max-lg:hidden ml-5" variant="primary" rounded>
