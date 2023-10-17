@@ -13,12 +13,12 @@
     @apply mt-4 flex flex-col h-full;
 
     h3 {
-      @apply md:mt-6;
+      @apply max-md:text-3xl md:mt-6;
     }
   }
 
   &__description {
-    @apply text-xl my-4 line-clamp-4;
+    @apply md:text-xl my-4 line-clamp-4;
   }
 
   &__tag {

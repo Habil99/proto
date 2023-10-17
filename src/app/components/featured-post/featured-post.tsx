@@ -14,16 +14,16 @@ const FeaturedPostType = () => {
   return (
     <section className="md:mb-36">
       <h2 className="section-title">Featured posts</h2>
-      <div className="flex gap-8">
-        <div className="lg:flex-[0.55]">
+      <div className="flex flex-wrap   gap-8">
+        <div className="flex-grow md:flex-[0.5] lg:flex-[0.55]">
           {mainFeaturedPostType && <PostCard data={mainFeaturedPostType} />}
         </div>
-        <div className="lg:flex-[0.45] flex flex-col gap-3 h-full overflow-y-auto">
+        <div className="flex-grow max-md:overflow-x-auto md:flex-[0.5] lg:flex-[0.45] flex md:flex-col gap-3 h-full overflow-y-auto">
           {otherFeaturedPostTypes.length > 0 &&
             otherFeaturedPostTypes.map((post) => (
               <article
                 key={post.id}
-                className="p-6 rounded-lg border border-solid border-border-color bg-card-background-color flex gap-4"
+                className="p-6 rounded-lg shrink-0 border border-solid border-border-color bg-card-background-color flex gap-4"
               >
                 <Link
                   href="/"
