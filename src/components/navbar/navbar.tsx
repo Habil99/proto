@@ -10,7 +10,7 @@ import MobileMenu from "@/components/navbar/mobile-menu";
 export const Navbar = () => {
   return (
     <>
-      <nav className="g-nav mb-6r md:mb-16">
+      <nav className="g-nav mb-8 md:mb-16">
         <div className="g-container pt-6 flex items-cente">
           <Link href="/">
             <Logo />
