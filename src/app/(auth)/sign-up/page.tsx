@@ -5,7 +5,7 @@ import { Button } from "@/components";
 export default function SignUp() {
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="border border-border-color p-12 rounded-lg flex flex-col text-center">
+      <div className="border border-border-color p-12 rounded-lg flex flex-col text-center bg-indigo-900/10">
         <Link className="flex justify-center" href="/">
           <Logo />
         </Link>
