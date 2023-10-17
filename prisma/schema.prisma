@@ -19,18 +19,8 @@ model User {
   password  String
   tokens    Token[]
   posts     Post[]
-  Profile   Profile?
   Comment   Comment[]
   Like      PostLike[]
-}
-
-model Profile {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  bio       String?
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique
 }
 
 model Token {

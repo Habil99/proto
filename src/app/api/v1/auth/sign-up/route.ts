@@ -1,5 +1,6 @@
+import prisma from "@/db";
 import { z } from "zod";
-import prisma from "../../../../../../db";
+import jwt from "jsonwebtoken";
 
 export async function POST(request: Request) {
   const { name, email, password } = await request.json();
@@ -29,17 +30,28 @@ export async function POST(request: Request) {
       },
     });
 
-    await prisma.profile.create({
+    const EXPIRES_IN = 1000 * 60 * 60 * 24 * 365 * 10; // 10 years
+    const expires = new Date(Date.now() + EXPIRES_IN);
+
+    const token = await prisma.token.create({
       data: {
+        token: jwt.sign({ id: user.id }, process.env.JWT_SECRET as string),
         user: {
           connect: {
             id: user.id,
           },
         },
-        bio: "",
+        expires,
       },
     });
-    return Response.json(user, { status: 201 });
+
+    return Response.json(
+      {
+        token: token.token,
+        user,
+      },
+      { status: 201 },
+    );
   } catch (e) {
     return new Response(JSON.stringify(e), { status: 500 });
   }
