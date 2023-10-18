@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import verifyToken from "@/utils/verify-token";
-import prisma from "@/db";
+import { userService } from "@/services";
 
 type UseUser =
   | {
@@ -21,26 +21,7 @@ export const useUser = async (): Promise<UseUser> => {
     const tokenPayload = verifyToken(token);
     const userId = tokenPayload.userId;
 
-    try {
-      const user = await prisma.user.findFirst({
-        where: { id: userId },
-        select: {
-          id: true,
-          name: true,
-          email: true,
-        },
-      });
-
-      return {
-        user,
-        success: true,
-      };
-    } catch (e) {
-      return {
-        success: false,
-        error: e,
-      };
-    }
+    return await userService.findByUserId(userId);
   }
 
   return {
