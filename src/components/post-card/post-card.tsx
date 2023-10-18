@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { PostCardPropsType } from "@/components/post-card/post-card.type";
+import { PostCardProps } from "@/components/post-card/post-card.type";
 import Image from "next/image";
 import postCardStyles from "./post-card.module.scss";
 import Link from "next/link";
 import { FiClock } from "react-icons/fi";
 import PostCardTag from "@/components/post-card/atoms/post-card-tag";
 
-const PostCard: FC<PostCardPropsType> = ({ data }) => {
+const PostCard: FC<PostCardProps> = ({ data }) => {
   return (
     <article className={postCardStyles.post__card}>
       <div className={postCardStyles.post__card__image__wrapper}>

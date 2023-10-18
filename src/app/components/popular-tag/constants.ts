@@ -1,6 +1,6 @@
-import { TagType } from "@/types";
+import { Tag } from "@/types";
 
-export const popularTags: TagType[] = [
+export const popularTags: Tag[] = [
   {
     id: 8,
     title: "Inspiration",

@@ -1,1 +1,1 @@
-export type PopularTagPropsType = {};
+export type PopularTagProps = {};

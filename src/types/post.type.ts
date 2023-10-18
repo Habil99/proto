@@ -1,20 +1,20 @@
-export type AuthorType = {
+export type Author = {
   slug: string;
   imagePath: string;
 };
 
-export type FeaturedPostType = {
+export type FeaturedPost = {
   id: string | number;
   title: string;
   description: string;
   readTime: string;
   tag: string;
-  authors: AuthorType[];
+  authors: Author[];
   imagePath: string;
   isMain: true;
 };
 
-export type SecondaryPostType = {
+export type SecondaryPost = {
   id: number;
   title: string;
   imagePath: string;
@@ -22,4 +22,4 @@ export type SecondaryPostType = {
   isMain?: false;
 };
 
-export type PostType = Omit<FeaturedPostType, "isMain">;
+export type Post = Omit<FeaturedPost, "isMain">;

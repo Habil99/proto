@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { PostsPropsType } from "@/components/posts/posts.type";
+import { PostsProps } from "@/components/posts/posts.type";
 import PostCard from "@/components/post-card/post-card";
 import postsStyles from "./posts.module.scss";
 import { Button } from "@/components";
 
-export const Posts: FC<PostsPropsType> = ({ posts }) => {
+export const Posts: FC<PostsProps> = ({ posts }) => {
   return (
     <section className="my-12">
       <div className={postsStyles.posts__wrapper}>

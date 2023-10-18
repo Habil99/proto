@@ -1,9 +1,7 @@
-import {
-  IconPropsType,
-} from "@/components/background-cover/icons/icon-props.type";
+import { IconProps } from "@/components/background-cover/icons/icon-props.type";
 import { FC } from "react";
 
-const FlairTopIcon: FC<IconPropsType> = ({ className }) => {
+const FlairTopIcon: FC<IconProps> = ({ className }) => {
   return (
     <svg
       className={className}

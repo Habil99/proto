@@ -1,6 +1,6 @@
-import { FeaturedPostType, SecondaryPostType } from "@/types/post.type";
+import { FeaturedPost, SecondaryPost } from "@/types/post.type";
 
-export const featuredPosts: (FeaturedPostType | SecondaryPostType)[] = [
+export const featuredPosts: (FeaturedPost | SecondaryPost)[] = [
   {
     id: 1,
     title: "Never let your memories be greater than your dreams",

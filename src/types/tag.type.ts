@@ -1,4 +1,4 @@
-export type TagType = {
+export type Tag = {
   id: number;
   title: string;
   imagePath: string;

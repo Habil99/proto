@@ -1,8 +1,8 @@
 import Banner from "@/app/components/banner/banner";
-import FeaturedPostType from "@/app/components/featured-post/featured-post";
+import FeaturedPost from "@/app/components/featured-post/featured-post";
 import PopularTag from "@/app/components/popular-tag/popular-tag";
 import { Posts } from "@/components";
-import { PostType } from "@/types";
+import { Post } from "@/types";
 import { uuid } from "@/utils";
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
   description: "Proto - Blog By Habil",
 };
 
-const posts: PostType[] = [
+const posts: Post[] = [
   {
     id: uuid(),
     tag: "Health",
@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <main className="">
       <Banner />
-      <FeaturedPostType />
+      <FeaturedPost />
       <PopularTag />
       <Posts posts={posts} />
     </main>

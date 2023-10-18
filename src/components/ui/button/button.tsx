@@ -1,18 +1,18 @@
 import { FC } from "react";
 import {
-  ButtonIconPosition,
-  ButtonPropsType,
-  ButtonSize,
-  ButtonVariant,
+  ButtonIconPositionEnum,
+  ButtonProps,
+  ButtonSizeEnum,
+  ButtonVariantEnum,
 } from "@/components/ui/button/button.type";
 import clsx from "clsx";
 
-export const Button: FC<ButtonPropsType> = ({
-  variant = ButtonVariant.Base,
+export const Button: FC<ButtonProps> = ({
+  variant = ButtonVariantEnum.Base,
   children,
   icon,
-  position = ButtonIconPosition.Before,
-  size = ButtonSize.Md,
+  position = ButtonIconPositionEnum.Before,
+  size = ButtonSizeEnum.Md,
   className,
   rounded = false,
   outlined = false,
@@ -21,19 +21,19 @@ export const Button: FC<ButtonPropsType> = ({
   return (
     <button
       className={clsx(className, "btn", {
-        btn__md: size === ButtonSize.Md,
-        btn__sm: size === ButtonSize.Sm,
-        btn__lg: size === ButtonSize.Lg,
-        btn__primary: variant === ButtonVariant.Primary,
-        btn__secondary: variant === ButtonVariant.Secondary,
+        btn__md: size === ButtonSizeEnum.Md,
+        btn__sm: size === ButtonSizeEnum.Sm,
+        btn__lg: size === ButtonSizeEnum.Lg,
+        btn__primary: variant === ButtonVariantEnum.Primary,
+        btn__secondary: variant === ButtonVariantEnum.Secondary,
         btn__rounded: rounded,
         btn__outlined: outlined,
       })}
       {...attributes}
     >
-      {icon && position === ButtonIconPosition.Before && icon}
+      {icon && position === ButtonIconPositionEnum.Before && icon}
       {children && <span>{children}</span>}
-      {icon && position === ButtonIconPosition.After && icon}
+      {icon && position === ButtonIconPositionEnum.After && icon}
     </button>
   );
 };

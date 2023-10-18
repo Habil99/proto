@@ -1,9 +1,7 @@
 import { FC } from "react";
-import {
-  IconPropsType,
-} from "@/components/background-cover/icons/icon-props.type";
+import { IconProps } from "@/components/background-cover/icons/icon-props.type";
 
-const LineWebIcon: FC<IconPropsType> = ({ className }) => {
+const LineWebIcon: FC<IconProps> = ({ className }) => {
   return (
     <svg
       className={className}

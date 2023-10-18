@@ -1,34 +1,34 @@
 import React from "react";
 
-export enum ButtonVariant {
+export enum ButtonVariantEnum {
   Base = "base",
   Primary = "primary",
   Secondary = "secondary",
   Success = "success",
 }
 
-export enum ButtonSize {
+export enum ButtonSizeEnum {
   Xs = "xs",
   Sm = "sm",
   Md = "md",
   Lg = "lg",
 }
 
-export enum ButtonIconPosition {
+export enum ButtonIconPositionEnum {
   Before = "before",
   After = "after",
 }
 
-export type ButtonVariantType = "base" | "primary" | "secondary" | "success";
-export type ButtonIconPositionType = "before" | "after";
-export type ButtonSizeType = "xs" | "sm" | "md" | "lg";
+export type ButtonVariant = "base" | "primary" | "secondary" | "success";
+export type ButtonIconPosition = "before" | "after";
+export type ButtonSize = "xs" | "sm" | "md" | "lg";
 
-export type ButtonPropsType = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: React.ReactNode;
-  variant?: ButtonVariantType;
+  variant?: ButtonVariant;
   icon?: React.ReactNode;
-  position?: ButtonIconPositionType;
-  size?: ButtonSizeType;
+  position?: ButtonIconPosition;
+  size?: ButtonSize;
   classNames?: string;
   rounded?: boolean;
   outlined?: boolean;

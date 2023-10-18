@@ -9,18 +9,15 @@ import {
   useState,
 } from "react";
 import { ThemeMode } from "@/context/theme/constants";
-import {
-  ThemeContextType,
-  ThemeProviderType,
-} from "@/context/theme/theme.type";
+import { ThemeContext, ThemeProvider } from "@/context/theme/theme.type";
 
-const ThemeContext = createContext<ThemeContextType>({
+const ThemeContext = createContext<ThemeContext>({
   mode: ThemeMode.Light,
   toggleThemeMode: () => {},
 });
 
 export function useThemeSelector<T>(
-  selector: (state: ThemeContextType) => T = (state) => state as T,
+  selector: (state: ThemeContext) => T = (state) => state as T,
 ): T {
   const context = useContext(ThemeContext);
   if (!context) {
@@ -29,10 +26,7 @@ export function useThemeSelector<T>(
   return selector(context);
 }
 
-const ThemeProvider: FC<ThemeProviderType> = ({
-  children,
-  defaultThemeMode,
-}) => {
+const ThemeProvider: FC<ThemeProvider> = ({ children, defaultThemeMode }) => {
   const [mode, setMode] = useState<ThemeMode>(
     defaultThemeMode || ThemeMode.Light,
   );

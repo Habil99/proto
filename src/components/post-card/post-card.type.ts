@@ -1,5 +1,5 @@
-import { PostType } from "@/types/post.type";
+import { Post } from "@/types/post.type";
 
-export type PostCardPropsType = {
-  data: PostType;
+export type PostCardProps = {
+  data: Post;
 };

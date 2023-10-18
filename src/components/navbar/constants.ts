@@ -1,6 +1,6 @@
-import { NavLinkType } from "@/components/navbar/navbar.type";
+import { NavLink } from "@/components/navbar/navbar.type";
 
-export const navLinks: NavLinkType[] = [
+export const navLinks: NavLink[] = [
   {
     path: "/style-guide",
     label: "Style Guide",

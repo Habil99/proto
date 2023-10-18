@@ -1,5 +1,5 @@
-import { PostType } from "@/types";
+import { Post } from "@/types";
 
-export type PostsPropsType = {
-  posts: PostType[];
+export type PostsProps = {
+  posts: Post[];
 };

@@ -1,4 +1,4 @@
-type UuidType = {
+type Uuid = {
   length?: number;
   prefix?: string;
   suffix?: string;
@@ -18,7 +18,7 @@ export const uuid = ({
   prefix = "",
   suffix = "",
   type = "alphanumeric", // alphanumeric, numeric, alpha
-}: UuidType = {}) => {
+}: Uuid = {}) => {
   let result = "";
   const numericCharactersUnicode = {
     startUnicode: 48,

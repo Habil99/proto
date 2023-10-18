@@ -1,3 +1,3 @@
-export type PostCardTagType = {
+export type PostCardTag = {
   label: string;
 };

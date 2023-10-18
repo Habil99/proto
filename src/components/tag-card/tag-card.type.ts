@@ -1,5 +1,5 @@
-import { TagType } from "@/types";
+import { Tag } from "@/types";
 
 export type TagCardPropsTpe = {
-  data: TagType;
+  data: Tag;
 };

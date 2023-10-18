@@ -1,12 +1,12 @@
 "use client";
 
-import { ThemeContextType, ThemeMode, useThemeSelector } from "@/context/theme";
+import { ThemeContext, ThemeMode, useThemeSelector } from "@/context/theme";
 import { Button } from "@/components";
 import { FaMoon } from "react-icons/fa";
 import { BiSun } from "react-icons/bi";
 
 export const ThemeSwitcher = () => {
-  const { mode, toggleThemeMode } = useThemeSelector<ThemeContextType>();
+  const { mode, toggleThemeMode } = useThemeSelector<ThemeContext>();
 
   return (
     <Button
