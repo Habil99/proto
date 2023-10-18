@@ -19,7 +19,7 @@ import {
 } from "./tooltip";
 
 const toolbarVariants = cva(
-  "relative flex select-none items-stretch gap-1 bg-background",
+  "relative flex select-none items-stretch gap-1 bg-background/20",
 );
 
 export const linkVariants = cva("font-medium underline underline-offset-4");

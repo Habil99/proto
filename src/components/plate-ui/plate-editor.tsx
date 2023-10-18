@@ -81,11 +81,7 @@ import {
 } from "@udecode/plate-select";
 import { createTabbablePlugin } from "@udecode/plate-tabbable";
 import { createTrailingBlockPlugin } from "@udecode/plate-trailing-block";
-import { createCommentsPlugin } from "@udecode/plate-comments";
 import { createAutoformatPlugin } from "@udecode/plate-autoformat";
-import { createDeserializeDocxPlugin } from "@udecode/plate-serializer-docx";
-import { createDeserializeCsvPlugin } from "@udecode/plate-serializer-csv";
-import { createDeserializeMdPlugin } from "@udecode/plate-serializer-md";
 
 import { BlockquoteElement } from "@/components/plate-ui/blockquote-element";
 import { CodeBlockElement } from "@/components/plate-ui/code-block-element";
@@ -102,6 +98,7 @@ import { FixedToolbarButtons } from "@/components/plate-ui/fixed-toolbar-buttons
 import { FloatingToolbar } from "@/components/plate-ui/floating-toolbar";
 import { FloatingToolbarButtons } from "@/components/plate-ui/floating-toolbar-buttons";
 import { withPlaceholders } from "@/components/plate-ui/placeholder";
+import { MARK_HIGHLIGHT } from "@udecode/plate";
 
 const plugins = createPlugins(
   [
@@ -240,7 +237,6 @@ const plugins = createPlugins(
     createTrailingBlockPlugin({
       options: { type: ELEMENT_PARAGRAPH },
     }),
-    createCommentsPlugin(),
     createAutoformatPlugin({
       options: {
         rules: [
@@ -249,9 +245,6 @@ const plugins = createPlugins(
         enableUndoOnDelete: true,
       },
     }),
-    createDeserializeDocxPlugin(),
-    createDeserializeCsvPlugin(),
-    createDeserializeMdPlugin(),
   ],
   {
     components: withPlaceholders({
@@ -274,6 +267,7 @@ const plugins = createPlugins(
       [MARK_SUBSCRIPT]: withProps(PlateLeaf, { as: "sub" }),
       [MARK_SUPERSCRIPT]: withProps(PlateLeaf, { as: "sup" }),
       [MARK_UNDERLINE]: withProps(PlateLeaf, { as: "u" }),
+      [MARK_HIGHLIGHT]: withProps(PlateLeaf, { as: "mark" }),
     }),
   },
 );
@@ -288,16 +282,18 @@ const initialValue = [
 
 export function PlateEditor() {
   return (
-    <Plate plugins={plugins} initialValue={initialValue}>
-      <FixedToolbar>
-        <FixedToolbarButtons />
-      </FixedToolbar>
+    <div className="plate-editor">
+      <Plate plugins={plugins} initialValue={initialValue}>
+        <FixedToolbar>
+          <FixedToolbarButtons />
+        </FixedToolbar>
 
-      <Editor />
+        <Editor />
 
-      <FloatingToolbar>
-        <FloatingToolbarButtons />
-      </FloatingToolbar>
-    </Plate>
+        <FloatingToolbar>
+          <FloatingToolbarButtons />
+        </FloatingToolbar>
+      </Plate>
+    </div>
   );
 }
