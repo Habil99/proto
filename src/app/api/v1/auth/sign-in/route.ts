@@ -1,5 +1,6 @@
 import prisma from "@/db";
 import createToken from "@/app/api/v1/auth/create-token";
+import ResponseEntity from "@/shared/response-entity";
 
 export async function POST(request: Request) {
   const { email, password } = await request.json();
@@ -12,29 +13,13 @@ export async function POST(request: Request) {
       },
     });
 
-    const exists = await prisma.token.findFirst({
-      where: {
-        user: {
-          id: user.id,
-        },
-      },
-    });
-
-    if (exists) {
-      await prisma.token.delete({
-        where: {
-          id: exists.id,
-        },
-      });
-    }
-
     const { token, expires } = createToken(user.id);
 
     return Response.json(
-      {
+      new ResponseEntity(201, {
         token,
         user,
-      },
+      }),
       {
         status: 201,
         headers: {
@@ -46,5 +31,3 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify(e), { status: 500 });
   }
 }
-
-// TODO: create base response class that makes it easier to return responses in a consistent way and inherit from Response

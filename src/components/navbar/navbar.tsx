@@ -11,7 +11,7 @@ export const Navbar = () => {
   return (
     <>
       <nav className="g-nav mb-8 md:mb-16">
-        <div className="g-container pt-6 flex items-cente">
+        <div className="g-container pt-6 flex items-center">
           <Link href="/">
             <Logo />
           </Link>
