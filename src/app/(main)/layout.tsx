@@ -19,9 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="g-container">{children}</div>
+      <div className="g-container flex-grow">{children}</div>
       <Footer />
     </section>
   );

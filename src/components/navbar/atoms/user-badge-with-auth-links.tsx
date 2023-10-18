@@ -30,10 +30,10 @@ const UserBadgeWithAuthLinks = () => {
           <AvatarFallback>{user.name[0].toUpperCase()}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="min-w-[12rem]" align="end">
         <DropdownMenuItem>
-          <Link className="w-full" href="/profile">
-            Profile
+          <Link className="w-full" href="/profile/create-post">
+            Write a post
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
