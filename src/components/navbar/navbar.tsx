@@ -6,6 +6,7 @@ import { Button } from "@/components";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher/theme-switcher";
 import { BiSearch } from "react-icons/bi";
 import MobileMenu from "@/components/navbar/mobile-menu";
+import UserBadgeWithAuthLinks from "@/components/navbar/atoms/user-badge-with-auth-links";
 
 export const Navbar = () => {
   return (
@@ -25,12 +26,7 @@ export const Navbar = () => {
           <div className="ml-auto flex items-center gap-2">
             <Button className="!px-2" icon={<BiSearch />} size="lg" />
             <ThemeSwitcher />
-            <Link className="max-lg:hidden" href="/sign-in">
-              Sign In
-            </Link>
-            <Button className="max-lg:hidden ml-5" variant="primary" rounded>
-              Become a member
-            </Button>
+            <UserBadgeWithAuthLinks />
             <div className="lg:hidden">
               <MobileMenu />
             </div>
