@@ -4,7 +4,7 @@ import {
   ButtonProps,
   ButtonSizeEnum,
   ButtonVariantEnum,
-} from "@/components/ui/button/button.type";
+} from "@/components/button/button.type";
 import clsx from "clsx";
 
 export const Button: FC<ButtonProps> = ({
