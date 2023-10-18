@@ -1,5 +1,5 @@
-import { Button } from "@/components";
 import { FC } from "react";
+import { Button } from "@/components/ui/button";
 
 const Banner: FC = () => {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/components/ui/logo/logo";
+import Logo from "@/components/logo/logo";
 import Link from "next/link";
 import { Button } from "@/components";
 import { FormEvent } from "react";

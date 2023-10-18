@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
-import Logo from "@/components/ui/logo/logo";
+import Logo from "@/components/logo/logo";
 import { Button } from "@/components";
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const router = useRouter();
-  
+
   const signUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const values = {
