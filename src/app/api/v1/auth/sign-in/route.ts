@@ -1,19 +1,14 @@
-import prisma from "@/db";
-import createToken from "@/app/api/v1/auth/create-token";
 import ResponseEntity from "@/shared/response-entity";
+import { authService } from "@/services";
 
 export async function POST(request: Request) {
   const { email, password } = await request.json();
 
   try {
-    const user = await prisma.user.findFirstOrThrow({
-      where: {
-        email,
-        password,
-      },
+    const { user, token, expires } = await authService.signIn({
+      email,
+      password,
     });
-
-    const { token, expires } = createToken(user.id);
 
     return Response.json(
       new ResponseEntity(201, {

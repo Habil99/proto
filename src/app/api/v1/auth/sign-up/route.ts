@@ -1,7 +1,6 @@
-import prisma from "@/db";
 import { z } from "zod";
-import createToken from "@/app/api/v1/auth/create-token";
 import ResponseEntity from "@/shared/response-entity";
+import { authService } from "@/services";
 
 export async function POST(request: Request) {
   const { name, email, password } = await request.json();
@@ -23,15 +22,11 @@ export async function POST(request: Request) {
   }
 
   try {
-    const user = await prisma.user.create({
-      data: {
-        name: parseResult.data.name,
-        email: parseResult.data.email,
-        password: parseResult.data.password,
-      },
+    const { user, token, expires } = await authService.signUp({
+      name: parseResult.data.name,
+      email: parseResult.data.email,
+      password: parseResult.data.password,
     });
-
-    const { token, expires } = createToken(user.id);
 
     return Response.json(
       new ResponseEntity(201, {
