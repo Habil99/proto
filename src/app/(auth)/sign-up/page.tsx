@@ -76,7 +76,7 @@ export default function SignUp() {
             placeholder="Confirm password"
           />
           <Button className="w-full" variant="primary" type="submit">
-            Sign in
+            Sign up
           </Button>
         </form>
         <p>

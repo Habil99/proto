@@ -1,8 +1,23 @@
+"use client";
+
 import Logo from "@/components/ui/logo/logo";
 import Link from "next/link";
 import { Button } from "@/components";
+import { FormEvent } from "react";
 
 export default function SignIn() {
+  const signIn = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const values = {
+      email: e.currentTarget.email.value,
+      password: e.currentTarget.password.value,
+    };
+    await fetch("/api/v1/auth/sign-in", {
+      method: "POST",
+      body: JSON.stringify(values),
+    });
+  };
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="border border-border-color p-12 rounded-lg flex flex-col text-center bg-indigo-900/10">
@@ -11,7 +26,7 @@ export default function SignIn() {
         </Link>
         <h3 className="mt-10 mb-4">Sign in</h3>
         <p>Sign into your account for full access</p>
-        <form className="max-w-sm my-8">
+        <form className="max-w-sm my-8" onSubmit={signIn}>
           <label className="sr-only" htmlFor="email">
             Email
           </label>

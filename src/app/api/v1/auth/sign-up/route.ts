@@ -1,6 +1,6 @@
 import prisma from "@/db";
 import { z } from "zod";
-import jwt from "jsonwebtoken";
+import createToken from "@/app/api/v1/auth/create-token";
 
 export async function POST(request: Request) {
   const { name, email, password } = await request.json();
@@ -30,27 +30,19 @@ export async function POST(request: Request) {
       },
     });
 
-    const EXPIRES_IN = 1000 * 60 * 60 * 24 * 365 * 10; // 10 years
-    const expires = new Date(Date.now() + EXPIRES_IN);
-
-    const token = await prisma.token.create({
-      data: {
-        token: jwt.sign({ id: user.id }, process.env.JWT_SECRET as string),
-        user: {
-          connect: {
-            id: user.id,
-          },
-        },
-        expires,
-      },
-    });
+    const { token, expires } = createToken(user.id);
 
     return Response.json(
       {
-        token: token.token,
+        token,
         user,
       },
-      { status: 201 },
+      {
+        status: 201,
+        headers: {
+          "Set-Cookie": `token=${token}; HttpOnly; Path=/; Expires=${expires}; SameSite=Strict`,
+        },
+      },
     );
   } catch (e) {
     return new Response(JSON.stringify(e), { status: 500 });
