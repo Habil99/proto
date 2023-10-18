@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useAppSelector } from "@/store";
 import { shallowEqual } from "react-redux";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const UserBadgeWithAuthLinks = () => {
   const { user } = useAppSelector((state) => state.user, shallowEqual);
@@ -17,11 +18,10 @@ const UserBadgeWithAuthLinks = () => {
       </Link>
     </>
   ) : (
-    <Link
-      className="rounded-full w-12 h-12 bg-card-background-color border border-theme-color text-color-main flex items-center justify-center"
-      href="/profile"
-    >
-      {user.name[0].toUpperCase()}
+    <Link href="/profile">
+      <Avatar className="rounded-full w-12 h-12  border border-theme-color text-color-main flex items-center justify-center">
+        <AvatarFallback>{user.name[0].toUpperCase()}</AvatarFallback>
+      </Avatar>
     </Link>
   );
 };
