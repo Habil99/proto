@@ -4,8 +4,11 @@ import Logo from "@/components/ui/logo/logo";
 import Link from "next/link";
 import { Button } from "@/components";
 import { FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
+  const router = useRouter();
+
   const signIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const values = {
@@ -15,7 +18,7 @@ export default function SignIn() {
     await fetch("/api/v1/auth/sign-in", {
       method: "POST",
       body: JSON.stringify(values),
-    });
+    }).then(() => router.push("/"));
   };
 
   return (

@@ -1,5 +1,8 @@
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+import { TokenPayload } from "@/types/token.type";
 
-export default function verifyToken(token: string): JwtPayload | string {
-  return jwt.verify(token, process.env.JWT_SECRET as string);
+type VerifyToken = TokenPayload;
+
+export default function verifyToken(token: string): VerifyToken {
+  return jwt.verify(token, process.env.JWT_SECRET as string) as VerifyToken;
 }
