@@ -1,0 +1,3 @@
+TODO:
+ - [ ] Improve the UI
+ - [ ] Fix performance issue that renders late and causes a flash of unauthenticated content

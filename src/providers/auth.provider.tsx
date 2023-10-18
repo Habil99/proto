@@ -8,7 +8,6 @@ type AuthProviderProps = {
   user: any;
 };
 
-// TODO: fix performance issue that renders late and causes a flash of unauthenticated content
 export const AuthProvider: FC<AuthProviderProps> = ({ children, user }) => {
   const dispatch = useAppDispatch();
 
