@@ -1,22 +1,12 @@
 import { cookies } from "next/headers";
 import verifyToken from "@/utils/verify-token";
 import { userService } from "@/services";
+import { SerializedUser } from "@/types";
 
-type UseUser =
-  | {
-      success: true;
-      user: any;
-    }
-  | {
-      success: false;
-      error: any;
-    }
-  | {
-      isAuth: false;
-    };
+export const useUser = async (): Promise<SerializedUser | null> => {
+  const cookieStore = cookies();
+  const token = cookieStore.get("token")?.value;
 
-export const useUser = async (): Promise<UseUser> => {
-  const token = cookies().get("token")?.value;
   if (token) {
     const tokenPayload = verifyToken(token);
     const userId = tokenPayload.userId;
@@ -24,7 +14,5 @@ export const useUser = async (): Promise<UseUser> => {
     return await userService.findByUserId(userId);
   }
 
-  return {
-    isAuth: false,
-  };
+  return null;
 };

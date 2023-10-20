@@ -1,22 +1,15 @@
 import GenericService from "@/services/generic.service";
+import { SerializedUser } from "@/types";
+import AppFetch from "@/lib/app-fetch";
 
 class UserService extends GenericService {
   constructor() {
     super();
   }
 
-  async findByUserId(userId: string): Promise<
-    | {
-        success: true;
-        user: any;
-      }
-    | {
-        success: false;
-        error: any;
-      }
-  > {
+  async findByUserId(userId: string): Promise<SerializedUser | null> {
     try {
-      const user = await this.prisma.user.findFirst({
+      return await this.prisma.user.findFirstOrThrow({
         where: { id: userId },
         select: {
           id: true,
@@ -24,17 +17,19 @@ class UserService extends GenericService {
           email: true,
         },
       });
-
-      return {
-        user,
-        success: true,
-      };
     } catch (e) {
-      return {
-        success: false,
-        error: e,
-      };
+      return null;
     }
+  }
+
+  async getCurrentUser(): Promise<SerializedUser | null> {
+    const appFetch = AppFetch.getInstance();
+
+    const response = await appFetch.request("/users/me");
+    const user = await response.json();
+
+    if (user) return user;
+    return null;
   }
 }
 

@@ -5,7 +5,7 @@ import { Button } from "@/components";
 import { FaMoon } from "react-icons/fa";
 import { BiSun } from "react-icons/bi";
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
   const { mode, toggleThemeMode } = useThemeSelector<ThemeContext>();
 
   return (
@@ -17,3 +17,4 @@ export const ThemeSwitcher = () => {
     />
   );
 };
+export default ThemeSwitcher;

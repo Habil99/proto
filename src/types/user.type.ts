@@ -6,3 +6,9 @@ export type User = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type SerializedUser = {
+  id: string;
+  name: string;
+  email: string;
+};

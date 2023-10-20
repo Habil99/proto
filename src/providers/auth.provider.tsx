@@ -12,14 +12,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children, user }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log("user", user);
-    if (user.success) {
-      dispatch(setUser(user.user));
+    if (user) {
+      dispatch(setUser(user));
     } else {
       dispatch(setUser(null));
     }
 
-    dispatch(setIsAuth(user.success));
+    dispatch(setIsAuth(!!user));
   }, [dispatch, user]);
 
   return children;
