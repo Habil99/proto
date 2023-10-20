@@ -8,12 +8,14 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import ThemeSwitcher from "@/components/theme-switcher/theme-switcher";
 import MobileMenu from "@/components/navbar/mobile-menu";
 import { userService } from "@/services";
+import LogoutButton from "@/components/navbar/logout-button";
 
 export const Navbar = async () => {
   const user = await userService.getCurrentUser();
@@ -58,6 +60,10 @@ export const Navbar = async () => {
                   <Link className="w-full" href="/profile/create-post">
                     Write a post
                   </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <LogoutButton />
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

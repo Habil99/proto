@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       {
         status: 201,
         headers: {
-          "Set-Cookie": `token=${token}; HttpOnly; Path=/; Expires=${expires}; SameSite=Strict`,
+          "Set-Cookie": `token=${token}; Path=/; Expires=${expires}; SameSite=Strict`,
         },
       },
     );

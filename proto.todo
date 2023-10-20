@@ -1,3 +1,6 @@
 TODO:
  - [ ] Improve the UI
- - [ ] Fix performance issue that renders late and causes a flash of unauthenticated content
+ - [+] Fix performance issue that renders late and causes a flash of unauthenticated content
+ - [ ] Hash password
+ - [ ] Extract prisma from all client servers to api
+ - [ ] Make httpOnly true for cookies

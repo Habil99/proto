@@ -20,7 +20,10 @@ class AppFetch {
         .map((cookie) => `${cookie.name}=${cookie.value}`)
         .join(";"),
     };
-    this.fetch = fetch;
+    this.fetch =
+      typeof window !== "undefined"
+        ? fetch.bind(window)
+        : fetch.bind(globalThis);
   }
 
   static getInstance(cookies?: RequestCookie[]): AppFetch {

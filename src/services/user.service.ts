@@ -23,13 +23,19 @@ class UserService extends GenericService {
   }
 
   async getCurrentUser(): Promise<SerializedUser | null> {
-    const appFetch = AppFetch.getInstance();
+    try {
+      const appFetch = AppFetch.getInstance();
 
-    const response = await appFetch.request("/users/me");
-    const user = await response.json();
+      const response = await appFetch.request("/users/me", {
+        cache: "no-store",
+      });
+      const user = await response.json();
 
-    if (user) return user;
-    return null;
+      if (user) return user;
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 }
 
