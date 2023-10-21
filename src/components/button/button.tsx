@@ -28,6 +28,10 @@ export const Button: FC<ButtonProps> = ({
         btn__secondary: variant === ButtonVariantEnum.Secondary,
         btn__rounded: rounded,
         btn__outlined: outlined,
+        "flex items-center gap-2":
+          icon && position === ButtonIconPositionEnum.After,
+        "flex items-center gap-2 flex-row-reverse":
+          icon && position === ButtonIconPositionEnum.Before,
       })}
       {...attributes}
     >

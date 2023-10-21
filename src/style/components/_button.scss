@@ -11,6 +11,10 @@
     @apply bg-gradient-primary text-white hover:text-white;
   }
 
+  &__secondary {
+    @apply bg-secondary text-white hover:text-white;
+  }
+
   &__flat {
     --btn-accent-color: var(--theme-color);
     @apply bg-[var(--btn-accent-color)] border border-solid border-[var(--btn-accent-color)];

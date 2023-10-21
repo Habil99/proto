@@ -9,6 +9,7 @@ import { ReduxProvider } from "@/store/provider";
 import { AuthProvider } from "@/providers/auth.provider";
 import AppFetch from "@/lib/app-fetch";
 import { userService } from "@/services";
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default async function Layout({
             <ThemeProvider defaultThemeMode={defaultThemeMode}>
               <BackgroundCover />
               {children}
+              <Toaster />
             </ThemeProvider>
           </AuthProvider>
         </ReduxProvider>

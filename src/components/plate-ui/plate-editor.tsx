@@ -272,18 +272,15 @@ const plugins = createPlugins(
   },
 );
 
-const initialValue = [
-  {
-    id: "1",
-    type: "p",
-    children: [{ text: "Hello, World!" }],
-  },
-];
+type PlateEditorProps = {
+  handleChange: (value: any) => void;
+  value: any;
+};
 
-export function PlateEditor() {
+export function PlateEditor({ handleChange, value }: PlateEditorProps) {
   return (
     <div className="plate-editor">
-      <Plate plugins={plugins} initialValue={initialValue}>
+      <Plate plugins={plugins} onChange={handleChange} value={value}>
         <FixedToolbar>
           <FixedToolbarButtons />
         </FixedToolbar>
