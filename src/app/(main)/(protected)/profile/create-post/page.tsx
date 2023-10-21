@@ -14,12 +14,19 @@ export default function CreatePost() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const updateErrorToast = (updatableToast: ReturnType<typeof toast>) => {
+  const updateErrorToast = (
+    updatableToast: ReturnType<typeof toast>,
+    publish: boolean,
+  ) => {
+    const errorMessageDescription = publish
+      ? "Your post could not be published"
+      : "Your post could not be saved as a draft";
+
     updatableToast.update({
       id: updatableToast.id,
       variant: "destructive",
       title: "Something went wrong",
-      description: "Your post could not be published",
+      description: errorMessageDescription,
     });
   };
 
@@ -27,9 +34,17 @@ export default function CreatePost() {
     const appFetch = AppFetch.getInstance();
     setIsLoading(true);
 
+    const messageTitle = publish ? "Publishing..." : "Saving...";
+    const messageDescription = publish
+      ? "Your post is being published"
+      : "Your post is being saved as a draft";
+    const successMessageDescription = publish
+      ? "Your post has been published"
+      : "Your post has been saved as a draft";
+
     const createPostToast = toast({
-      title: "Publishing...",
-      description: "Your post is being published",
+      title: messageTitle,
+      description: messageDescription,
       duration: 3000,
     });
 
@@ -44,17 +59,17 @@ export default function CreatePost() {
       });
 
       if (!response.ok) {
-        updateErrorToast(createPostToast);
+        updateErrorToast(createPostToast, publish);
       } else {
         createPostToast.update({
           id: createPostToast.id,
           variant: "default",
           title: "Post published",
-          description: `Your post has been published with ${postTitle} title`,
+          description: successMessageDescription,
         });
       }
     } catch (e) {
-      updateErrorToast(createPostToast);
+      updateErrorToast(createPostToast, publish);
     } finally {
       setIsLoading(false);
     }
@@ -81,6 +96,7 @@ export default function CreatePost() {
           variant="secondary"
           onClick={() => handleCreatePost()}
           icon={<RiDraftFill />}
+          disabled={isLoading}
         >
           Save draft
         </Button>
@@ -89,8 +105,9 @@ export default function CreatePost() {
           variant="primary"
           position="after"
           onClick={() => handleCreatePost(true)}
+          disabled={isLoading}
         >
-          {isLoading ? "Publishing..." : "Publish"}
+          Publish
         </Button>
       </div>
     </section>
