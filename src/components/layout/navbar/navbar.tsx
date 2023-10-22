@@ -1,6 +1,6 @@
 import Logo from "@/components/logo/logo";
 import Link from "next/link";
-import { navLinks } from "@/components/navbar/constants";
+import { navLinks } from "@/components/layout/navbar/constants";
 import navbarStyles from "./navbar.module.scss";
 import { Button } from "@/components";
 import { BiSearch } from "react-icons/bi";
@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import ThemeSwitcher from "@/components/theme-switcher/theme-switcher";
-import MobileMenu from "@/components/navbar/mobile-menu";
+import MobileMenu from "@/components/layout/navbar/mobile-menu";
 import { userService } from "@/services";
-import LogoutButton from "@/components/navbar/logout-button";
+import LogoutButton from "@/components/layout/navbar/logout-button";
 
 export const Navbar = async () => {
   const user = await userService.getCurrentUser();
@@ -57,8 +57,8 @@ export const Navbar = async () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="min-w-[12rem]" align="end">
                 <DropdownMenuItem>
-                  <Link className="w-full" href="/profile/create-post">
-                    Write a post
+                  <Link className="w-full" href="/profile/posts">
+                    Your stories
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />

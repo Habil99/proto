@@ -3,10 +3,12 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Button } from "@/components";
 import React, { useEffect, useState } from "react";
-import { navLinks } from "@/components/navbar/constants";
+import { navLinks } from "@/components/layout/navbar/constants";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const MobileMenu = () => {
+  const pathname = usePathname();
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 
   const toggleMenuIsOpen = () => {
@@ -22,6 +24,12 @@ const MobileMenu = () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (menuIsOpen) {
+      toggleMenuIsOpen();
+    }
+  }, [pathname]);
 
   return (
     <>
@@ -48,10 +56,10 @@ const MobileMenu = () => {
           </ul>
         </div>
         <div className="flex items-center justify-center gap-4 mt-4">
-          <Link className="btn" href="/">
+          <Link className="btn" href="/sign-in">
             Sign in
           </Link>
-          <Link className="btn btn__primary" href="/">
+          <Link className="btn btn__primary" href="/sign-up">
             Become a member
           </Link>
         </div>

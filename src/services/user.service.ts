@@ -7,21 +7,6 @@ class UserService extends GenericService {
     super();
   }
 
-  async findByUserId(userId: string): Promise<SerializedUser | null> {
-    try {
-      return await this.prisma.user.findFirstOrThrow({
-        where: { id: userId },
-        select: {
-          id: true,
-          name: true,
-          email: true,
-        },
-      });
-    } catch (e) {
-      return null;
-    }
-  }
-
   async getCurrentUser(): Promise<SerializedUser | null> {
     try {
       const appFetch = AppFetch.getInstance();

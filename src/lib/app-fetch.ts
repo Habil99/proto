@@ -27,6 +27,10 @@ class AppFetch {
   }
 
   static getInstance(cookies?: RequestCookie[]): AppFetch {
+    if (cookies) {
+      AppFetch.instance = new AppFetch(cookies);
+    }
+    
     if (!AppFetch.instance) {
       AppFetch.instance = new AppFetch(cookies);
     }

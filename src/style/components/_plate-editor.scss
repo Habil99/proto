@@ -1,4 +1,10 @@
+
 .plate-editor {
   --radius-lg: var(--radius-md) !important;
   --radius-md: 4px !important;
+  --background: 250, 17%, 7%; // TODO: get this color from theme
+
+  * {
+    box-shadow: none !important;
+  }
 }

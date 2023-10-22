@@ -1,0 +1,64 @@
+@function hslToHex($hue, $saturation, $lightness) {
+  $rgb: hsl($hue, $saturation, $lightness);
+  $red: red($rgb);
+  $green: green($rgb);
+  $blue: blue($rgb);
+  $redHex: str-slice(ie-hex-str(0 + $red), 4);
+  $greenHex: str-slice(ie-hex-str(0 + $green), 4);
+  $blueHex: str-slice(ie-hex-str(0 + $blue), 4);
+  $hex: unquote("#" + $redHex + $greenHex + $blueHex);
+  @return $hex;
+}
+
+@function hslToRgb($hue, $saturation, $lightness) {
+  $rgb: hsl($hue, $saturation, $lightness);
+  $red: red($rgb);
+  $green: green($rgb);
+  $blue: blue($rgb);
+  @return $red, $green, $blue;
+}
+
+@function hexToHsl($hex) {
+  $hue: 0;
+  $saturation: percentage(1);
+
+  $red: red($hex);
+  $green: green($hex);
+  $blue: blue($hex);
+
+  $min: min($red, $green, $blue);
+  $max: max($red, $green, $blue);
+
+  $lightness: percentage(($min + $max) / 2);
+
+  $delta: $max - $min;
+
+  @if $delta == 0 {
+    $hue: 0;
+    $saturation: 0;
+  } @else {
+    $hue: 0;
+    $saturation: 0;
+    @if $lightness < 50 {
+      $saturation: percentage($delta / ($max + $min));
+    } @else {
+      $saturation: percentage($delta / (2 - $max - $min));
+    }
+
+    @if $max == $red {
+      $hue: ($green - $blue) / $delta + if($green < $blue, 6, 0);
+    } @else if $max == $green {
+      $hue: ($blue - $red) / $delta + 2;
+    } @else {
+      $hue: ($red - $green) / $delta + 4;
+    }
+
+    $hue: $hue * 60;
+  }
+
+  @if $hue < 0 {
+    $hue: $hue + 360;
+  }
+
+  @return $hue $saturation $lightness;
+}

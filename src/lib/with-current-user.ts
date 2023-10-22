@@ -16,7 +16,7 @@ const withCurrentUser = async (
   const { userId } = verifyToken(token);
 
   if (!userId) {
-    callback(request);
+    return callback(request);
   }
 
   try {
