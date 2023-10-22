@@ -107,50 +107,69 @@ export default function CreatePost() {
     [],
   );
 
-  const handleCreatePost = useCallback(async (publish = false) => {
-    const appFetch = AppFetch.getInstance();
-    setIsLoading(true);
+  const handleCreatePost = useCallback(
+    async (publish = false) => {
+      if (!postTitle || !postContent || !postThumbnail) {
+        return toast({
+          variant: "destructive",
+          title: "Please fill out all fields",
+          description: "Please fill out all fields before submitting",
+          duration: 3000,
+        });
+      }
 
-    const messageTitle = publish ? "Publishing..." : "Saving...";
-    const messageDescription = publish
-      ? "Your post is being published"
-      : "Your post is being saved as a draft";
-    const successMessageDescription = publish
-      ? "Your post has been published"
-      : "Your post has been saved as a draft";
+      const appFetch = AppFetch.getInstance();
+      setIsLoading(true);
 
-    const createPostToast = toast({
-      title: messageTitle,
-      description: messageDescription,
-      duration: 3000,
-    });
+      const messageTitle = publish ? "Publishing..." : "Saving...";
+      const messageDescription = publish
+        ? "Your post is being published"
+        : "Your post is being saved as a draft";
+      const successMessageDescription = publish
+        ? "Your post has been published"
+        : "Your post has been saved as a draft";
 
-    try {
-      const response = await appFetch.request("/posts", {
-        method: "POST",
-        body: JSON.stringify({
-          title: postTitle,
-          content: postContent,
-          publish,
-        }),
+      const createPostToast = toast({
+        title: messageTitle,
+        description: messageDescription,
+        duration: 3000,
       });
 
-      if (!response.ok) {
-        updateErrorToast(createPostToast, publish);
-      } else {
+      const postThumbnailBase64 = await new Promise<string>((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          resolve(reader.result as string);
+        };
+        reader.readAsDataURL(postThumbnail);
+      });
+
+      const formData = new FormData();
+      formData.append("title", postTitle);
+      formData.append("content", JSON.stringify(postContent));
+      formData.append("thumbnail", postThumbnailBase64);
+      formData.append("publish", publish ? "1" : "0");
+
+      try {
+        await appFetch.request("/posts", {
+          method: "POST",
+          body: formData,
+          sendContentType: false,
+        });
+
         createPostToast.update({
           id: createPostToast.id,
           variant: "default",
           title: "Post published",
           description: successMessageDescription,
         });
+      } catch (e) {
+        updateErrorToast(createPostToast, publish);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (e) {
-      updateErrorToast(createPostToast, publish);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+    },
+    [postTitle, postContent, postThumbnail],
+  );
 
   return (
     <section className="">
@@ -188,7 +207,7 @@ export default function CreatePost() {
             <div className="h-px bg-border-color rounded-md w-10"></div>
           </div>
           <Button
-            className="bg-blue-700 btn__md"
+            className="bg-blue-700 btn__md text-sm"
             onClick={() => uploadRef?.current?.click()}
           >
             Browse files

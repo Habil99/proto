@@ -8,3 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 export function isImageFile(fileType: string) {
   return fileType.startsWith("image/");
 }
+
+export class ObjectUtils {
+  static omit(object: Record<string, any>, keys: string[]) {
+    return Object.fromEntries(
+      Object.entries(object).filter(([key]) => !keys.includes(key)),
+    );
+  }
+}

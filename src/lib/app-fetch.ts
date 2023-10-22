@@ -1,4 +1,5 @@
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { ObjectUtils } from "@/lib/utils";
 
 /**
  * @class AppFetch - that extends fetch to add a base url and headers with singletons
@@ -30,7 +31,7 @@ class AppFetch {
     if (cookies) {
       AppFetch.instance = new AppFetch(cookies);
     }
-    
+
     if (!AppFetch.instance) {
       AppFetch.instance = new AppFetch(cookies);
     }
@@ -42,16 +43,28 @@ class AppFetch {
     return this.cookies;
   }
 
-  public async request(url: string, options?: RequestInit): Promise<Response> {
+  public async request(
+    url: string,
+    options?: RequestInit & {
+      sendContentType?: boolean;
+    },
+  ) {
+    const headers = options?.sendContentType
+      ? this.headers
+      : ObjectUtils.omit(this.headers, ["Content-Type"]);
+
     return await this.fetch(`${this.baseUrl}${url}`, {
       ...options,
       headers: {
-        ...this.headers,
+        ...headers,
         ...options?.headers,
         Cookie: this.cookies
           .map((cookie) => `${cookie.name}=${cookie.value}`)
           .join(";"),
       },
+    }).then(async (res) => {
+      if (res.ok) return await res.json();
+      throw new Error(JSON.stringify(await res.json()));
     });
   }
 

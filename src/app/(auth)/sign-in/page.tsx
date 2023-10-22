@@ -18,7 +18,15 @@ export default function SignIn() {
     await fetch("/api/v1/auth/sign-in", {
       method: "POST",
       body: JSON.stringify(values),
-    }).then(() => router.push("/"));
+    })
+      .then(async (res) => {
+        if (res.ok) return res.json();
+        throw new Error(JSON.stringify(await res.json()));
+      })
+      .then(() => router.push("/"))
+      .catch((err) => {
+        console.log("error", err);
+      });
   };
 
   return (

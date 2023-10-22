@@ -4,3 +4,4 @@ TODO:
  - [ ] Hash password
  - [ ] Extract prisma from all client servers to api
  - [ ] Make httpOnly true for cookies
+ - [ ] Handle errors in forms

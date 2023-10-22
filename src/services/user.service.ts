@@ -11,13 +11,9 @@ class UserService extends GenericService {
     try {
       const appFetch = AppFetch.getInstance();
 
-      const response = await appFetch.request("/users/me", {
+      return await appFetch.request("/users/me", {
         cache: "no-store",
       });
-      const user = await response.json();
-
-      if (user) return user;
-      return null;
     } catch (e) {
       return null;
     }

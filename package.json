@@ -35,6 +35,7 @@
     "@udecode/plate-paragraph": "^24.4.0",
     "@udecode/plate-resizable": "^24.4.0",
     "class-variance-authority": "^0.7.0",
+    "cloudinary": "^1.41.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
     "jsonwebtoken": "^9.0.2",

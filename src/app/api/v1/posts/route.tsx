@@ -1,7 +1,8 @@
 import { NextRequest } from "next/server";
 import withCurrentUser from "@/lib/with-current-user";
-import prisma from "@/db";
 import { z } from "zod";
+import cloudinaryUploader from "@/lib/cloudinary-uploader";
+import prisma from "@/db";
 
 export const POST = async (request: NextRequest) =>
   withCurrentUser(request, async (request, currentUser) => {
@@ -9,37 +10,21 @@ export const POST = async (request: NextRequest) =>
       return new Response("Unauthorized", { status: 401 });
     }
 
-    const { title, content, publish } = await request.json();
+    const formData = await request.formData();
 
-    const childrenSchema = z.object({
-      id: z.optional(z.string()),
-      text: z.string(),
-      code: z.optional(z.boolean()),
-      italic: z.optional(z.boolean()),
-      bold: z.optional(z.boolean()),
-      underline: z.optional(z.boolean()),
-      strikethrough: z.optional(z.boolean()),
-      inlineCode: z.optional(z.boolean()),
-      link: z.optional(z.string()),
-    });
+    const title = formData.get("title");
+    const content = JSON.parse(formData.get("content") as string);
+    const thumbnail = formData.get("thumbnail") as string;
+    const publish = formData.get("publish") === "1";
 
-    // merge childrenSchema with itself
-    const nestedChildrenSchema = z.object({
-      ...childrenSchema.shape,
-      children: z.optional(z.array(childrenSchema)),
-    });
-
-    const postSchema = z.object({
-      title: z.string().min(12),
-      content: z.array(
-        z.object({
-          id: z.string(),
-          type: z.string(),
-          url: z.optional(z.string()),
-          children: z.optional(z.array(nestedChildrenSchema)),
-        }),
-      ),
-    });
+    if (!title || !content || !thumbnail) {
+      return Response.json(
+        {
+          message: "Please fill out all fields",
+        },
+        { status: 400 },
+      );
+    }
 
     try {
       const validatedPost = z
@@ -48,19 +33,36 @@ export const POST = async (request: NextRequest) =>
           content: z.array(z.any()),
         })
         .parse({ title, content });
+
+      const uploadApiResponse = await cloudinaryUploader.upload(
+        thumbnail,
+        {
+          allowed_formats: ["webp", "png", "jpg", "jpeg"],
+        },
+        (error, result) => {
+          if (error) {
+            throw new Error(error?.message);
+          }
+
+          return result?.url;
+        },
+      );
+
       const { title: validatedTitle, content: validatedContent } =
         validatedPost;
+
       const post = await prisma.post.create({
         data: {
           title: validatedTitle,
           authorId: currentUser.id,
           content: validatedContent,
+          thumbnail: uploadApiResponse.url,
           published: publish,
         },
       });
 
       return Response.json(post, { status: 201 });
     } catch (e) {
-      return new Response(JSON.stringify(e), { status: 500 });
+      return Response.json(e, { status: 500 });
     }
   });
