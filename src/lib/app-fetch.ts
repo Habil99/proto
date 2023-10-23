@@ -27,13 +27,13 @@ class AppFetch {
         : fetch.bind(globalThis);
   }
 
-  static getInstance(cookies?: RequestCookie[]): AppFetch {
+  static getInstance(cookies?: RequestCookie[] | null): AppFetch {
     if (cookies) {
       AppFetch.instance = new AppFetch(cookies);
     }
 
     if (!AppFetch.instance) {
-      AppFetch.instance = new AppFetch(cookies);
+      AppFetch.instance = new AppFetch(cookies || []);
     }
 
     return AppFetch.instance;
@@ -64,7 +64,7 @@ class AppFetch {
       },
     }).then(async (res) => {
       if (res.ok) return await res.json();
-      throw new Error(JSON.stringify(await res.json()));
+      // throw new Error(JSON.stringify(await res.json())); FIXME: ...
     });
   }
 

@@ -13,7 +13,7 @@ const PostCard: FC<PostCardProps> = ({ data }) => {
         <Link href="/">
           <Image
             className={postCardStyles.post__card__image}
-            src={data.imagePath}
+            src={data.thumbnailUrl}
             alt={data.title}
             fill
             sizes="(max-width: 768px) 100vw, 750px"
@@ -27,9 +27,7 @@ const PostCard: FC<PostCardProps> = ({ data }) => {
         <Link href="/">
           <h3>{data.title}</h3>
         </Link>
-        <p className={postCardStyles.post__card__description}>
-          {data.description}
-        </p>
+        <p className={postCardStyles.post__card__description}>{data.content}</p>
         <div className={postCardStyles.post__card__footer}>
           <div className={postCardStyles.post__card__authors}>
             {data.authors.map((author) => (
@@ -39,7 +37,7 @@ const PostCard: FC<PostCardProps> = ({ data }) => {
                 key={author.slug}
               >
                 <Image
-                  src={author.imagePath}
+                  src={author.avatar}
                   alt={author.slug}
                   width={36}
                   height={36}

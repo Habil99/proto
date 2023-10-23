@@ -19,12 +19,13 @@ const posts: Post[] = [
     tag: "Health",
     title:
       "The mind and body are not separate. what affects one, affects the other.",
-    description:
+    content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    imagePath: "/images/post-7.webp",
+    thumbnailUrl: "/images/post-7.webp",
     authors: [
       {
-        imagePath: "/images/author-1.jpg",
+        id: uuid(),
+        avatar: "/images/author-1.jpg",
         slug: "author-1",
       },
     ],
@@ -34,12 +35,13 @@ const posts: Post[] = [
     id: uuid(),
     tag: "Sport",
     title: "Football is the most popular sport in the world",
-    description:
+    content:
       "Football is the most popular sport in the world. It is played in almost every country, and is the most popular sport in the world.",
-    imagePath: "/images/post-8.webp",
+    thumbnailUrl: "/images/post-8.webp",
     authors: [
       {
-        imagePath: "/images/author-2.jpg",
+        id: uuid(),
+        avatar: "/images/author-2.jpg",
         slug: "author-2",
       },
     ],
@@ -49,12 +51,13 @@ const posts: Post[] = [
     id: uuid(),
     tag: "Fashion",
     title: "Fashion is a popular aesthetic expression",
-    description:
+    content:
       "Fashion is a popular aesthetic expression at a particular period and place and in a specific context, especially in clothing, footwear, lifestyle, accessories, makeup, hairstyle, and body proportions.",
-    imagePath: "/images/post-9.webp",
+    thumbnailUrl: "/images/post-9.webp",
     authors: [
       {
-        imagePath: "/images/author-2.jpg",
+        id: uuid(),
+        avatar: "/images/author-2.jpg",
         slug: "author-3",
       },
     ],

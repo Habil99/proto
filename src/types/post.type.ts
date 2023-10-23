@@ -1,23 +1,24 @@
 export type Author = {
+  id: string;
   slug: string;
-  imagePath: string;
+  avatar: string;
 };
 
 export type FeaturedPost = {
   id: string | number;
   title: string;
-  description: string;
+  content: string;
   readTime: string;
   tag: string;
   authors: Author[];
-  imagePath: string;
+  thumbnailUrl: string;
   isMain: true;
 };
 
 export type SecondaryPost = {
   id: number;
   title: string;
-  imagePath: string;
+  thumbnailUrl: string;
   tag: string;
   isMain?: false;
 };

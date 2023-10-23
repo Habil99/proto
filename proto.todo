@@ -5,3 +5,4 @@ TODO:
  - [ ] Extract prisma from all client servers to api
  - [ ] Make httpOnly true for cookies
  - [ ] Handle errors in forms
+ - [ ] Add pagination to some endpoints
