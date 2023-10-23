@@ -3,18 +3,21 @@
 import Logo from "@/components/logo/logo";
 import Link from "next/link";
 import { Button } from "@/components";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const signIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const values = {
       email: e.currentTarget.email.value,
       password: e.currentTarget.password.value,
     };
+
     await fetch("/api/v1/auth/sign-in", {
       method: "POST",
       body: JSON.stringify(values),
@@ -26,7 +29,8 @@ export default function SignIn() {
       .then(() => router.push("/"))
       .catch((err) => {
         console.log("error", err);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -62,8 +66,13 @@ export default function SignIn() {
             name="password"
             placeholder="Your password"
           />
-          <Button className="w-full" variant="primary" type="submit">
-            Sign in
+          <Button
+            className="w-full"
+            variant="primary"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : "Sign in"}
           </Button>
         </form>
         <p>

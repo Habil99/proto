@@ -2,14 +2,18 @@
 import Link from "next/link";
 import Logo from "@/components/logo/logo";
 import { Button } from "@/components";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const signUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setIsLoading(true);
+
     const values = {
       name: e.currentTarget.userName.value,
       email: e.currentTarget.email.value,
@@ -23,7 +27,8 @@ export default function SignUp() {
         if (res.ok) return res.json();
         throw new Error(JSON.stringify(await res.json()));
       })
-      .then(() => router.push("/"));
+      .then(() => router.push("/"))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -83,8 +88,13 @@ export default function SignUp() {
             name="confirm-password"
             placeholder="Confirm password"
           />
-          <Button className="w-full" variant="primary" type="submit">
-            Sign up
+          <Button
+            className="w-full"
+            variant="primary"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : "Sign up"}
           </Button>
         </form>
         <p>
