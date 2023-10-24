@@ -4,12 +4,15 @@ import PostCard from "@/components/post-card/post-card";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { BiBookAdd } from "react-icons/bi";
+import { revalidateTag } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
 export default async function PostsPage() {
   const cookieStore = cookies();
   const posts = await postService.setCookies(cookieStore.getAll()).getAll();
+
+  revalidateTag("posts");
 
   return (
     <div>

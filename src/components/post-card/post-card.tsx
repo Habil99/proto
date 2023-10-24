@@ -13,6 +13,7 @@ import { Edit, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { postService } from "@/services";
 import { useToast } from "@/components/ui/use-toast";
+import { revalidatePath } from "next/cache";
 
 const PostCard: FC<PostCardProps> = ({ data, size = "lg", actionFooter }) => {
   const router = useRouter();
@@ -25,6 +26,7 @@ const PostCard: FC<PostCardProps> = ({ data, size = "lg", actionFooter }) => {
       toast({
         description: "Post deleted successfully",
       });
+      revalidatePath("/profile/posts");
     });
   };
 
