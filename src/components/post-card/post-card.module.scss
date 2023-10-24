@@ -1,5 +1,32 @@
 .post__card {
-  @apply flex flex-col p-6 rounded-lg border border-solid border-border-color bg-card-background-color;
+  $this: &;
+
+  @apply flex rounded-lg flex-col border border-solid border-border-color bg-card-background-color;
+
+  &__lg {
+    @apply p-6;
+
+    #{$this}__title {
+      @apply line-clamp-3;
+    }
+  }
+
+  &__md {
+    @apply p-4;
+
+    #{$this}__title {
+      @apply text-xl mt-3 line-clamp-2;
+    }
+  }
+
+  &__sm {
+    @apply p-2;
+
+    #{$this}__title {
+      @apply text-xl mt-2 line-clamp-1;
+    }
+
+  }
 
   &__image {
     @apply object-cover rounded-lg;

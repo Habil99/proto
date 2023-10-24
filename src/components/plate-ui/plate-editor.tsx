@@ -1,5 +1,3 @@
-"use client";
-
 import {
   createPlugins,
   Plate,
@@ -99,6 +97,7 @@ import { FloatingToolbar } from "@/components/plate-ui/floating-toolbar";
 import { FloatingToolbarButtons } from "@/components/plate-ui/floating-toolbar-buttons";
 import { withPlaceholders } from "@/components/plate-ui/placeholder";
 import { MARK_HIGHLIGHT } from "@udecode/plate";
+import { useMemo } from "react";
 
 const plugins = createPlugins(
   [
@@ -275,12 +274,29 @@ const plugins = createPlugins(
 type PlateEditorProps = {
   handleChange: (value: any) => void;
   value: any;
+  initialHtml?: string;
 };
 
-export function PlateEditor({ handleChange, value }: PlateEditorProps) {
+export function PlateEditor({
+  handleChange,
+  value,
+  initialHtml,
+}: PlateEditorProps) {
+  // This is tricky, because this is plate issue
+  const initialValue = useMemo(() => {
+    if (!initialHtml) return;
+    return JSON.parse(initialHtml);
+  }, [initialHtml]);
+
   return (
     <div className="plate-editor">
-      <Plate plugins={plugins} onChange={handleChange} value={value}>
+      <Plate
+        plugins={plugins}
+        onChange={handleChange}
+        value={value}
+        initialValue={initialValue}
+        normalizeInitialValue
+      >
         <FixedToolbar>
           <FixedToolbarButtons />
         </FixedToolbar>

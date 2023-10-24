@@ -3,50 +3,41 @@ import { uuid } from "@/utils";
 
 export const featuredPosts: (FeaturedPost | SecondaryPost)[] = [
   {
-    id: 1,
+    id: uuid(),
     title: "Never let your memories be greater than your dreams",
     content:
       "Before long the searchlight discovered some distance away a schooner with all sails set, apparently the same vessel which had been noticed earlier in the evening. The wind had by this time backed to the east, and there was a shudder amongst the watchers on",
-    thumbnailUrl: "/images/post-1.webp",
-    authors: [
-      {
-        id: uuid(),
-        avatar: "/images/author-1.jpg",
-        slug: "john",
-      },
-      {
-        id: uuid(),
-        avatar: "/images/author-2.jpg",
-        slug: "leo",
-      },
-    ],
+    thumbnail: "/images/post-1.webp",
+    author: { id: uuid(), avatar: "/images/author-1.jpg", slug: "john" },
     tag: "Travel",
     readTime: "3 min",
+    createdAt: new Date("2023-10-12"),
+    updatedAt: new Date("2023-10-12"),
     isMain: true,
   },
   {
-    id: 2,
+    id: uuid(),
     title: "Self-observation is the first step of inner unfolding",
-    thumbnailUrl: "/images/post-2.webp",
+    thumbnail: "/images/post-2.webp",
     tag: "Lifestyle",
   },
   {
-    id: 3,
+    id: uuid(),
     title:
       "The mind and body are not separate. what affects one, affects the other",
-    thumbnailUrl: "/images/post-3.webp",
+    thumbnail: "/images/post-3.webp",
     tag: "Health",
   },
   {
-    id: 4,
+    id: uuid(),
     title: "New tech innovation for low cost ocean cleanup",
-    thumbnailUrl: "/images/post-4.webp",
+    thumbnail: "/images/post-4.webp",
     tag: "Technology",
   },
   {
-    id: 5,
+    id: uuid(),
     title: "All the money in the world can't buy you back good health",
-    thumbnailUrl: "/images/post-5.webp",
+    thumbnail: "/images/post-5.webp",
     tag: "Health",
   },
 ];

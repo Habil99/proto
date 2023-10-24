@@ -3,9 +3,10 @@ import withCurrentUser from "@/lib/with-current-user";
 import { z } from "zod";
 import cloudinaryUploader from "@/lib/cloudinary-uploader";
 import prisma from "@/db";
+import { revalidateTag } from "next/cache";
 
 export const POST = async (request: NextRequest) =>
-  withCurrentUser(request, async (request, currentUser) => {
+  withCurrentUser(request, async (currentUser) => {
     if (!currentUser) {
       return new Response("Unauthorized", { status: 401 });
     }
@@ -61,6 +62,7 @@ export const POST = async (request: NextRequest) =>
         },
       });
 
+      revalidateTag("posts");
       return Response.json(post, { status: 201 });
     } catch (e) {
       return Response.json(e, { status: 500 });

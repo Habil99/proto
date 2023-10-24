@@ -20,6 +20,7 @@ const config: Config = {
         "theme-color": "var(--theme-color)",
         "logo-header-height": "var(--logo-header-height)",
         "logo-footer-height": "var(--logo-footer-height)",
+        "paper-primary": "var(--paper-primary)",
         white: "var(--white)",
         black: "var(--black)",
         "success-color": "var(--success-color)",

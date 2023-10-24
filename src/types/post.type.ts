@@ -5,20 +5,22 @@ export type Author = {
 };
 
 export type FeaturedPost = {
-  id: string | number;
+  id: string;
   title: string;
-  content: string;
+  content: any; // TODO: get rid of any
   readTime: string;
   tag: string;
-  authors: Author[];
-  thumbnailUrl: string;
+  author: Author;
+  thumbnail: string;
+  createdAt: Date;
+  updatedAt: Date;
   isMain: true;
 };
 
 export type SecondaryPost = {
-  id: number;
+  id: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnail: string;
   tag: string;
   isMain?: false;
 };

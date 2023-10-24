@@ -5,18 +5,18 @@ import { User } from "@/types";
 
 const withCurrentUser = async (
   request: NextRequest,
-  callback: (request: NextRequest, user?: User) => Promise<Response>,
+  callback: (user?: User) => Promise<Response>,
 ) => {
   const token = request.cookies.get("token")?.value;
 
   if (!token) {
-    return callback(request);
+    return callback();
   }
 
   const { userId } = verifyToken(token);
 
   if (!userId) {
-    return callback(request);
+    return callback();
   }
 
   try {
@@ -26,9 +26,9 @@ const withCurrentUser = async (
       },
     });
 
-    return callback(request, user);
+    return callback(user);
   } catch (e) {
-    return callback(request);
+    return callback();
   }
 };
 

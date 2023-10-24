@@ -21,14 +21,14 @@ const posts: Post[] = [
       "The mind and body are not separate. what affects one, affects the other.",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    thumbnailUrl: "/images/post-7.webp",
-    authors: [
-      {
-        id: uuid(),
-        avatar: "/images/author-1.jpg",
-        slug: "author-1",
-      },
-    ],
+    thumbnail: "/images/post-7.webp",
+    author: {
+      id: uuid(),
+      avatar: "/images/author-1.jpg",
+      slug: "author-1",
+    },
+    createdAt: new Date("2023-10-12"),
+    updatedAt: new Date("2023-10-12"),
     readTime: "5 min",
   },
   {
@@ -37,14 +37,14 @@ const posts: Post[] = [
     title: "Football is the most popular sport in the world",
     content:
       "Football is the most popular sport in the world. It is played in almost every country, and is the most popular sport in the world.",
-    thumbnailUrl: "/images/post-8.webp",
-    authors: [
-      {
-        id: uuid(),
-        avatar: "/images/author-2.jpg",
-        slug: "author-2",
-      },
-    ],
+    thumbnail: "/images/post-8.webp",
+    author: {
+      id: uuid(),
+      avatar: "/images/author-2.jpg",
+      slug: "author-2",
+    },
+    createdAt: new Date("2023-10-12"),
+    updatedAt: new Date("2023-10-12"),
     readTime: "4 min",
   },
   {
@@ -53,14 +53,14 @@ const posts: Post[] = [
     title: "Fashion is a popular aesthetic expression",
     content:
       "Fashion is a popular aesthetic expression at a particular period and place and in a specific context, especially in clothing, footwear, lifestyle, accessories, makeup, hairstyle, and body proportions.",
-    thumbnailUrl: "/images/post-9.webp",
-    authors: [
-      {
-        id: uuid(),
-        avatar: "/images/author-2.jpg",
-        slug: "author-3",
-      },
-    ],
+    thumbnail: "/images/post-9.webp",
+    author: {
+      id: uuid(),
+      avatar: "/images/author-2.jpg",
+      slug: "author-3",
+    },
+    createdAt: new Date("2023-10-12"),
+    updatedAt: new Date("2023-10-12"),
     readTime: "3 min",
   },
 ];

@@ -1,71 +1,41 @@
 import { postService } from "@/services";
-import postCardStyles from "@/components/post-card/post-card.module.scss";
-import Link from "next/link";
-import Image from "next/image";
-import { FiClock } from "react-icons/fi";
 import { cookies } from "next/headers";
+import PostCard from "@/components/post-card/post-card";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { BiBookAdd } from "react-icons/bi";
 
 export const dynamic = "force-dynamic";
 
 export default async function PostsPage() {
   const cookieStore = cookies();
   const posts = await postService.setCookies(cookieStore.getAll()).getAll();
-  console.log(posts);
+
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-      }}
-    >
-      {posts?.map((post) => (
-        <article className={postCardStyles.post__card} key={post.id}>
-          <div className={postCardStyles.post__card__image__wrapper}>
-            <Link href="/">
-              <Image
-                className={postCardStyles.post__card__image}
-                src={post.thumbnail}
-                alt={post.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 750px"
-              />
-            </Link>
-          </div>
-          <div className={postCardStyles.post__card__body}>
-            {/*<Link href="/">*/}
-            {/*  <PostCardTag label={data.tag} />*/}
-            {/*</Link>*/}
-            <Link href="/">
-              <h5>{post.title}</h5>
-            </Link>
-            <p className={postCardStyles.post__card__description}>
-              {/*{post.description}*/}
-            </p>
-            <div className={postCardStyles.post__card__footer}>
-              {/*<div className={postCardStyles.post__card__authors}>*/}
-              {/*  {data.authors.map((author) => (*/}
-              {/*    <Link*/}
-              {/*      className={postCardStyles.post__card__author}*/}
-              {/*      href={`/author/${author.slug}`}*/}
-              {/*      key={author.slug}*/}
-              {/*    >*/}
-              {/*      <Image*/}
-              {/*        src={author.imagePath}*/}
-              {/*        alt={author.slug}*/}
-              {/*        width={36}*/}
-              {/*        height={36}*/}
-              {/*      />*/}
-              {/*    </Link>*/}
-              {/*  ))}*/}
-              {/*</div>*/}
-              <div className={postCardStyles.post__card__read__time}>
-                <FiClock />
-                <span>5 min</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      ))}
+    <div>
+      <div className="flex items-center justify-end mb-4">
+        <Link
+          className={buttonVariants({
+            variant: "primary",
+          })}
+          href="/profile/posts/create"
+        >
+          Write new story
+          <BiBookAdd className="ml-2" />
+        </Link>
+      </div>
+      {posts?.length ? (
+        <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(240px,_1fr))]">
+          {posts?.map((post) => (
+            <PostCard data={post} size="md" key={post.id} actionFooter />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center my-24 justify-center">
+          <h4>You have no posts yet.</h4>
+          <p>No worries, you can create one by clicking the button above.</p>
+        </div>
+      )}
     </div>
   );
 }

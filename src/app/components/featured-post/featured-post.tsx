@@ -31,7 +31,7 @@ const FeaturedPost = () => {
                 >
                   <Image
                     className="object-cover rounded-lg aspect-[5/4] h-full"
-                    src={post.thumbnailUrl}
+                    src={post.thumbnail}
                     alt={post.title}
                     fill
                   />

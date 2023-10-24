@@ -4,7 +4,7 @@ import { getReasonPhrase, StatusCodes } from "http-status-codes";
 import prisma from "@/db";
 
 export const GET = async (request: NextRequest) =>
-  withCurrentUser(request, async (request, currentUser) => {
+  withCurrentUser(request, async (currentUser) => {
     if (!currentUser) {
       return Response.json(
         {
@@ -28,7 +28,6 @@ export const GET = async (request: NextRequest) =>
           thumbnail: true,
           published: true,
           author: true,
-          authorId: true,
           createdAt: true,
           updatedAt: true,
         },

@@ -64,6 +64,7 @@ class AppFetch {
       },
     }).then(async (res) => {
       if (res.ok) return await res.json();
+      throw new Error(await res.text());
       // throw new Error(JSON.stringify(await res.json())); FIXME: ...
     });
   }
